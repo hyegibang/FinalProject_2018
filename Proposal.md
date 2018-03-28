@@ -5,6 +5,7 @@ The main idea of the project is to use android phone as a wireless, controllable
 Hyegi 
 * Learn about app development 
 * Learn about UI in Python 
+
 Jon 
 
 
