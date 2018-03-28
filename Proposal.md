@@ -13,8 +13,9 @@ Jon
 * Pybluez
 * Pygame 
 ## Project Schedule 
-Within the first two weeks, we wish to have a working MVP.
+Within the first two weeks, we wish to have a working MVP. Since we are collaborating the project with our Project and Market project, we wish to have a feasible MVP to present to people. We wish to have a perfect MVP by week four. However, based on the feedbacks we receive from both classes, we would refine our MVP throughout. By week six, we hope to have our stretch goal accomplished.  
 ## Collaboration plan 
+We wil work on seperate parts of the project so that we would not face any merge conflicts. 
 
 ## Biggest Risks 
-Getting our user interface to work in a nice user-friendly and intuitive manner. 
+Developing an app and getting our user interface to work in a nice user-friendly and intuitive manner.
