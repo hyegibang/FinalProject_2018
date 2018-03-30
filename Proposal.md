@@ -15,7 +15,7 @@ Jon
 ## Project Schedule 
 Within the first two weeks, we wish to have a working MVP. Since we are merging our Software Design project with our Project and Market project, we wish to have a feasible MVP to present to people as soon as possible. By the fourth week, we hope to have a perfect MVP. However, based on the feedbacks we receive from both classes, we would refine our project. By week six, we hope to have our stretch goal accomplished.  
 ## Collaboration plan 
-We wil work on seperate parts of the project so that we would not face any merge conflicts but have a regular meeting. 
+We wil work on seperate parts of the project so that we would not face any merge conflicts but have a regular meeting. "Grab and Go"
 
 ## Biggest Risks 
 Developing an app and getting our user interface to work in a nice user-friendly and intuitive manner.
