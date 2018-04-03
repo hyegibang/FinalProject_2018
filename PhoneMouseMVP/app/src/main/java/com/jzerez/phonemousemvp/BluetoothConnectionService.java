@@ -5,6 +5,9 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import java.io.IOException;
@@ -211,4 +214,5 @@ public class BluetoothConnectionService {
         Log.d(TAG, "write: Write Called.");
         mConnectedThread.write(out);
     }
+
 }
