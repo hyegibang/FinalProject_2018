@@ -27,3 +27,7 @@ The architecture of the system is a bit complex. Below is a list of classes that
 * Would this project actually be useful?
 * Is our project a bit underscoped?
 * Would it be useful to try to extract accelerometer data from the phone to deduce position in 2D space like a mouse? Would that add functionality?
+
+## Next Steps for Further Development
+* 2D positional tracking to use the phone as a mouse to control the cursor
+* 3D positional tracking to use the phone to interact with CAD models. 
