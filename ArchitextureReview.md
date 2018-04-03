@@ -1,6 +1,9 @@
 # Architectural Review:
 ### Hyegi Bang and Jonathan Zerez
 
+## Link to Electronic Feedback form:
+https://docs.google.com/forms/d/e/1FAIpQLSeYFfLpxBBQjB3R0cclBvXjtYRtVLgFIEx_oG4abMcU9955Ow/viewform?usp=sf_link
+
 ## Goals for this Review:
 * Gauge general thoughts about the concept of the project idea, as well as possible ways to grow and change the project as to increase its complexity/usefulness.
 * Receive feedback on the proposed software architecture design explained below
