@@ -1,3 +1,4 @@
+#import ~/../../usr/lib/python3/dist-packages/kivy
 import kivy
 import socket
 from kivy.app import App
@@ -5,17 +6,18 @@ from kivy.uix.label import Label
 
 
 class MyApp(App):
-    def __init__(self):
+    #Protip: don't write things in the __init__ method. It screws everything up.
+    def build(self):
         HOST = '192.168.32.236'
-        PORT = 42069
+        PORT = 13379
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((HOST, PORT))
         print("connected!")
-        s.send(bytes("hello world", 'utf-8'))
-
-    def build(self):
+        b = bytearray()
+        b.extend("kivy suuuuuucks")
+        print(b)
+        s.send(b)
         return Label(text='Hello world')
-
 
 if __name__ == '__main__':
     MyApp().run()
