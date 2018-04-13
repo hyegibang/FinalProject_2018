@@ -10,7 +10,7 @@ import os
 
 keyboard = Controller();
 # Create a text file for manual code referencing
-if 'keycodes.txt' not in os.listdir():
+if 'shortcuts.py' in os.listdir() and 'keycodes.txt' not in os.listdir():
     keycodes = open('keycodes.txt', 'w')
     for name, member in Key.__members__.items():
         print(name, member)
