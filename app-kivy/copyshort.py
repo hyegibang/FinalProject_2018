@@ -35,4 +35,4 @@ def keystroke(inputs):
             keyboard.release(Key[input])
 
 if __name__ == '__main__':
-    keystroke('a')
+    keystroke('l')
