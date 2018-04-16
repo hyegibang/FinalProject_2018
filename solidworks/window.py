@@ -20,14 +20,19 @@ def print_windows():
     for title in titles:
         if len(title) > 8:
             print(title)
-for i in range(100):
-    print( win32gui.GetWindowText(win32gui.GetForegroundWindow()))
-    time.sleep(1)
+    """
+    for i in range(100):
+        print( win32gui.GetWindowText(win32gui.GetForegroundWindow()))
+        time.sleep(1)
+    """
 
 def get_current_window(file_types = ["SLDASM", "SLDPRT"]):
     window_type = "SOLIDWORKS Education Edition"
     current_window = win32gui.GetWindowText(win32gui.GetForegroundWindow())
     if window_type in (current_window):
+        return True
+
+        #TODO: Integrate part/assembly/drawing/sketch detection
         if current_window.split(".")[-1] == "SLDASM":
             return "Assembly"
     #    if current_window.split(".")[-1] ==
