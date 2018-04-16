@@ -10,7 +10,7 @@ import os
 
 keyboard = Controller();
 # Create a text file for manual code referencing
-if 'shortcuts.py' in os.listdir() and 'keycodes.txt' not in os.listdir():
+if 'keycodes.txt' not in os.listdir():
     keycodes = open('keycodes.txt', 'w')
     for name, member in Key.__members__.items():
         print(name, member)
@@ -35,4 +35,4 @@ def keystroke(inputs):
             keyboard.release(Key[input])
 
 if __name__ == '__main__':
-    keystroke('a')
+    keystroke('l')
