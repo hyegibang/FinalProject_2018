@@ -14,10 +14,8 @@ class MyLabel(Label):
 
     def send_data(self):
         while True:
-            self.text = self.sock.send_data()
-            #self.text = str(self.sock.send_data(), 'utf-8')
-            #print(self.text)
-
+            self.text = str(self.sock.send_data(b), 'utf-8')
+            return self.text
 
 class BoxApp(App):
 

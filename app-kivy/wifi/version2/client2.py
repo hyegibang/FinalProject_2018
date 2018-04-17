@@ -8,6 +8,4 @@ clientsocket.connect((host, port))
 print("connected!")
 
 while True:
-    clientsocket.recv(1024)
-    text = str(clientsocket.get_data(), 'utf-8')
-    print(text)
+    text = str(clientsocket.recv(1024), 'utf-8')
