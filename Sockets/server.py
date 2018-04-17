@@ -1,8 +1,9 @@
 import socket
-HOST = '192.168.34.203'
-PORT = 42069
+HOST = '0.0.0.0'
+PORT = 8855
+print(socket.gethostname())
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((HOST, PORT))
+s.bind((socket.gethostbyname('0.0.0.0'), PORT))
 s.listen(1)
 connection, address = s.accept()
 print('connected by ', address)
