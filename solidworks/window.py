@@ -31,7 +31,8 @@ def get_current_window(file_types = ["SLDASM", "SLDPRT"]):
     current_window = win32gui.GetWindowText(win32gui.GetForegroundWindow())
     if window_type in (current_window):
         return True
-
+    else:
+        return current_window
         #TODO: Integrate part/assembly/drawing/sketch detection
         if current_window.split(".")[-1] == "SLDASM":
             return "Assembly"

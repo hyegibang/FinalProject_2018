@@ -31,8 +31,12 @@ init_pos = [0,0,0]
 degree_steps = 5
 while True:
     if get_current_window():
+        print("valid")
         #Recieve and slightly reformat input stream
-        data, addr = sock.recvfrom(2048)
+        try:
+            data, addr = sock.recvfrom(2048)
+        except KeyboardInterrupt:
+            break;
         data = str(data)[2: -1]
         #Extracting the orientaiton part of the stream
         orientation = data.split(' 81, ')
@@ -75,3 +79,5 @@ while True:
                         init_pos[2] -= degree_steps
             #input the keystrokes corresponding to the current time step
             keystroke(commands)
+    else:
+        print("invalid window")

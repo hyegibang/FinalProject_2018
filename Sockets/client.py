@@ -1,7 +1,11 @@
 import socket
-HOST = "192.168.32.236"
-PORT = 42069
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+print(socket.gethostname())
+HOST = "LAPTOP-C2CB21R0"
+#HOST = "311Z7H2"
+print(socket.gethostbyname('192.168.35.245'))
+print(socket.gethostbyname(HOST))
+PORT = 6969
+s = socket.socket()
 s.connect((HOST, PORT))
 print("connected!")
 s.send(bytes("hello world", 'utf-8'))
