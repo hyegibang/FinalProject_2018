@@ -21,7 +21,11 @@ from distutils.spawn import find_executable
 COMPILED_WITH_PYDEBUG = hasattr(sys, 'gettotalrefcount')
 
 # This global variable is used to hold the list of modules to be disabled.
+<<<<<<< HEAD
+disabled_module_list = []
+=======
 disabled_module_list = ['spwd','bz2','ossaudiodev','_curses','_curses_panel','readline','_locale','_bsddb','gdbm','dbm','nis','linuxaudiodev','crypt','_multiprocessing']
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 def add_dir_to_list(dirlist, dir):
     """Add the directory 'dir' to the list 'dirlist' (at the front) if
@@ -145,7 +149,10 @@ class PyBuildExt(build_ext):
     def __init__(self, dist):
         build_ext.__init__(self, dist)
         self.failed = []
+<<<<<<< HEAD
+=======
         self.cross_compile = os.environ.get('CROSS_COMPILE_TARGET') == 'yes'
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
     def build_extensions(self):
 
@@ -279,6 +286,8 @@ class PyBuildExt(build_ext):
                           (ext.name, sys.exc_info()[1]))
             self.failed.append(ext.name)
             return
+<<<<<<< HEAD
+=======
 
         # Import check will not work when cross-compiling.
         if os.environ.has_key('PYTHONXCPREFIX'):
@@ -287,6 +296,7 @@ class PyBuildExt(build_ext):
                 ext.name)
             return
 
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
         # Workaround for Mac OS X: The Carbon-based modules cannot be
         # reliably imported into a command-line Python
         if 'Carbon' in ext.extra_link_args:
@@ -378,10 +388,16 @@ class PyBuildExt(build_ext):
 
     def detect_modules(self):
         # Ensure that /usr/local is always used
+<<<<<<< HEAD
+        add_dir_to_list(self.compiler.library_dirs, '/usr/local/lib')
+        add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
+        self.add_multiarch_paths()
+=======
         if not self.cross_compile:
             add_dir_to_list(self.compiler.library_dirs, '/usr/local/lib')
             add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
             self.add_multiarch_paths()
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
         # Add paths specified in the environment variables LDFLAGS and
         # CPPFLAGS for header and library files.
@@ -418,8 +434,12 @@ class PyBuildExt(build_ext):
                         add_dir_to_list(dir_list, directory)
 
         if os.path.normpath(sys.prefix) != '/usr' \
+<<<<<<< HEAD
+                and not sysconfig.get_config_var('PYTHONFRAMEWORK'):
+=======
                 and not sysconfig.get_config_var('PYTHONFRAMEWORK') \
                 and not self.cross_compile:
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
             # OSX note: Don't add LIBDIR and INCLUDEDIR to building a framework
             # (PYTHONFRAMEWORK is set) to avoid # linking problems when
             # building a framework with different architectures than
@@ -437,6 +457,13 @@ class PyBuildExt(build_ext):
         # lib_dirs and inc_dirs are used to search for files;
         # if a file is found in one of those directories, it can
         # be assumed that no additional -I,-L directives are needed.
+<<<<<<< HEAD
+        lib_dirs = self.compiler.library_dirs + [
+            '/lib64', '/usr/lib64',
+            '/lib', '/usr/lib',
+            ]
+        inc_dirs = self.compiler.include_dirs + ['/usr/include']
+=======
         lib_dirs = self.compiler.library_dirs
         inc_dirs = self.compiler.include_dirs
         if not self.cross_compile:
@@ -452,6 +479,7 @@ class PyBuildExt(build_ext):
             ldflags = os.environ.get('LDFLAGS')
             if ldflags:
                 lib_dirs += [x[2:] for x in ldflags.split() if x.startswith('-L')]
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
         exts = []
         missing = []
 
@@ -1885,6 +1913,10 @@ class PyBuildExt(build_ext):
 
                 # Pass empty CFLAGS because we'll just append the resulting
                 # CFLAGS to Python's; -g or -O2 is to be avoided.
+<<<<<<< HEAD
+                cmd = "cd %s && env CFLAGS='' '%s/configure' %s" \
+                      % (ffi_builddir, ffi_srcdir, " ".join(config_args))
+=======
                 if self.cross_compile:
                     cmd = "cd %s && env CFLAGS='' %s/configure --host=%s --build=%s %s" \
                           % (ffi_builddir, ffi_srcdir,
@@ -1894,6 +1926,7 @@ class PyBuildExt(build_ext):
                 else:
                     cmd = "cd %s && env CFLAGS='' '%s/configure' %s" \
                           % (ffi_builddir, ffi_srcdir, " ".join(config_args))
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
                 res = os.system(cmd)
                 if res or not os.path.exists(ffi_configfile):

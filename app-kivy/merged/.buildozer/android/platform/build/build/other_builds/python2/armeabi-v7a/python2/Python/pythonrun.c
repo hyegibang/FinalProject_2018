@@ -254,6 +254,11 @@ Py_InitializeEx(int install_sigs)
     _PyGILState_Init(interp, tstate);
 #endif /* WITH_THREAD */
 
+<<<<<<< HEAD
+    if (!Py_NoSiteFlag)
+        initsite(); /* Module site */
+
+=======
     /* For PGS4A, we don't want to call initsite, as we won't have the
        library path set up until start.pyx finishes running. */
 #if 0
@@ -261,6 +266,7 @@ Py_InitializeEx(int install_sigs)
         initsite(); /* Module site */
 #endif 
     
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
     if ((p = Py_GETENV("PYTHONIOENCODING")) && *p != '\0') {
         p = icodeset = codeset = strdup(p);
         free_codeset = 1;

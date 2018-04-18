@@ -22,7 +22,11 @@ const char *Py_FileSystemDefaultEncoding = "mbcs";
 #elif defined(__APPLE__)
 const char *Py_FileSystemDefaultEncoding = "utf-8";
 #else
+<<<<<<< HEAD
+const char *Py_FileSystemDefaultEncoding = NULL; /* use default */
+=======
 const char *Py_FileSystemDefaultEncoding = "utf-8"; /* use default */
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 #endif
 
 /* Forward */

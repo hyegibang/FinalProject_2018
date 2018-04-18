@@ -6,22 +6,38 @@ LOCAL_MODULE := SDL2_mixer
 
 # Enable this if you want to support loading MOD music via modplug
 # The library path should be a relative path to this directory.
+<<<<<<< HEAD
+SUPPORT_MOD_MODPLUG ?= true
+=======
 SUPPORT_MOD_MODPLUG := false
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 MODPLUG_LIBRARY_PATH := external/libmodplug-0.8.8.4
 
 # Enable this if you want to support loading MOD music via mikmod
 # The library path should be a relative path to this directory.
+<<<<<<< HEAD
+SUPPORT_MOD_MIKMOD ?= true
+=======
 SUPPORT_MOD_MIKMOD := false
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 MIKMOD_LIBRARY_PATH := external/libmikmod-3.1.12
 
 # Enable this if you want to support loading MP3 music via SMPEG
 # The library path should be a relative path to this directory.
+<<<<<<< HEAD
+SUPPORT_MP3_SMPEG ?= true
+=======
 SUPPORT_MP3_SMPEG := false
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 SMPEG_LIBRARY_PATH := external/smpeg2-2.0.0
 
 # Enable this if you want to support loading OGG Vorbis music via Tremor
 # The library path should be a relative path to this directory.
+<<<<<<< HEAD
+SUPPORT_OGG ?= true
+=======
 SUPPORT_OGG := true
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 OGG_LIBRARY_PATH := external/libogg-1.3.1
 VORBIS_LIBRARY_PATH := external/libvorbisidec-1.2.1
 

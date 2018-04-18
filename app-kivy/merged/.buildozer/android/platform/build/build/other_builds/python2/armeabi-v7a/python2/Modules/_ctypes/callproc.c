@@ -1423,7 +1423,11 @@ static PyObject *py_dl_open(PyObject *self, PyObject *args)
     mode |= RTLD_NOW;
     handle = ctypes_dlopen(name, mode);
     if (!handle) {
+<<<<<<< HEAD
+        char *errmsg = ctypes_dlerror();
+=======
         const char *errmsg = ctypes_dlerror();
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
         if (!errmsg)
             errmsg = "dlopen() error";
         PyErr_SetString(PyExc_OSError,

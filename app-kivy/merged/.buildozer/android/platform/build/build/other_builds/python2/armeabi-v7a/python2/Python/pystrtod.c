@@ -126,6 +126,10 @@ _PyOS_ascii_strtod(const char *nptr, char **endptr)
 {
     char *fail_pos;
     double val = -1.0;
+<<<<<<< HEAD
+    struct lconv *locale_data;
+=======
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
     const char *decimal_point;
     size_t decimal_point_len;
     const char *p, *decimal_point_pos;
@@ -137,7 +141,12 @@ _PyOS_ascii_strtod(const char *nptr, char **endptr)
 
     fail_pos = NULL;
 
+<<<<<<< HEAD
+    locale_data = localeconv();
+    decimal_point = locale_data->decimal_point;
+=======
     decimal_point = ".";
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
     decimal_point_len = strlen(decimal_point);
 
     assert(decimal_point_len != 0);
@@ -373,7 +382,12 @@ PyOS_string_to_double(const char *s,
 Py_LOCAL_INLINE(void)
 change_decimal_from_locale_to_dot(char* buffer)
 {
+<<<<<<< HEAD
+    struct lconv *locale_data = localeconv();
+    const char *decimal_point = locale_data->decimal_point;
+=======
     const char *decimal_point = ".";
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
     if (decimal_point[0] != '.' || decimal_point[1] != 0) {
         size_t decimal_point_len = strlen(decimal_point);

@@ -6,7 +6,10 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+<<<<<<< HEAD
+=======
 #include <stdlib.h>
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 #if defined(__NetBSD__)
 #include <sys/param.h>
@@ -76,6 +79,8 @@ dl_funcptr _PyImport_GetDynLoadFunc(const char *fqname, const char *shortname,
     char pathbuf[260];
     int dlopenflags=0;
 
+<<<<<<< HEAD
+=======
     static void *libpymodules = -1;
     void *rv = NULL;
 
@@ -91,6 +96,7 @@ dl_funcptr _PyImport_GetDynLoadFunc(const char *fqname, const char *shortname,
     }
         
 
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
     if (strchr(pathname, '/') == NULL) {
         /* Prefix bare filename with "./" */
         PyOS_snprintf(pathbuf, sizeof(pathbuf), "./%-.255s", pathname);
@@ -100,6 +106,8 @@ dl_funcptr _PyImport_GetDynLoadFunc(const char *fqname, const char *shortname,
     PyOS_snprintf(funcname, sizeof(funcname),
                   LEAD_UNDERSCORE "init%.200s", shortname);
 
+<<<<<<< HEAD
+=======
 
     /* Read symbols that have been linked into the main binary. */
 
@@ -111,6 +119,7 @@ dl_funcptr _PyImport_GetDynLoadFunc(const char *fqname, const char *shortname,
     }
 
 
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
     if (fp != NULL) {
         int i;
         struct stat statb;

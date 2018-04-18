@@ -639,7 +639,17 @@ static void
 get_locale_info(int type, LocaleInfo *locale_info)
 {
     switch (type) {
+<<<<<<< HEAD
+    case LT_CURRENT_LOCALE: {
+        struct lconv *locale_data = localeconv();
+        locale_info->decimal_point = locale_data->decimal_point;
+        locale_info->thousands_sep = locale_data->thousands_sep;
+        locale_info->grouping = locale_data->grouping;
+        break;
+    }
+=======
     case LT_CURRENT_LOCALE:
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
     case LT_DEFAULT_LOCALE:
         locale_info->decimal_point = ".";
         locale_info->thousands_sep = ",";

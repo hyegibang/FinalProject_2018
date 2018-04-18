@@ -188,6 +188,8 @@ JNIEXPORT void JNICALL Java_org_libsdl_app_SDLActivity_onNativeHat(
     Android_OnHat(device_id, hat_id, x, y);
 }
 
+<<<<<<< HEAD
+=======
 /* Patched in env var setter for python-for-android */
 JNIEXPORT void JNICALL Java_org_libsdl_app_SDLActivity_nativeSetEnv(
                                     JNIEnv* env, jclass jcls,
@@ -201,6 +203,7 @@ JNIEXPORT void JNICALL Java_org_libsdl_app_SDLActivity_nativeSetEnv(
     (*env)->ReleaseStringUTFChars(env, j_value, value);
 }
 
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 JNIEXPORT jint JNICALL Java_org_libsdl_app_SDLActivity_nativeAddJoystick(
     JNIEnv* env, jclass jcls,

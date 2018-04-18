@@ -272,6 +272,33 @@ else:
     else:
         set_conversion_mode("ascii", "strict")
 
+<<<<<<< HEAD
+    class c_wchar_p(_SimpleCData):
+        _type_ = "Z"
+
+    class c_wchar(_SimpleCData):
+        _type_ = "u"
+
+    POINTER(c_wchar).from_param = c_wchar_p.from_param #_SimpleCData.c_wchar_p_from_param
+
+    def create_unicode_buffer(init, size=None):
+        """create_unicode_buffer(aString) -> character array
+        create_unicode_buffer(anInteger) -> character array
+        create_unicode_buffer(aString, anInteger) -> character array
+        """
+        if isinstance(init, (str, unicode)):
+            if size is None:
+                size = len(init)+1
+            buftype = c_wchar * size
+            buf = buftype()
+            buf.value = init
+            return buf
+        elif isinstance(init, (int, long)):
+            buftype = c_wchar * init
+            buf = buftype()
+            return buf
+        raise TypeError(init)
+=======
 # The wchar stuff causes a crash on Android (the bionic C library doesn't
 # implement wchar_t anyway)
 #
@@ -300,6 +327,7 @@ else:
 #            buf = buftype()
 #            return buf
 #        raise TypeError(init)
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 POINTER(c_char).from_param = c_char_p.from_param #_SimpleCData.c_char_p_from_param
 

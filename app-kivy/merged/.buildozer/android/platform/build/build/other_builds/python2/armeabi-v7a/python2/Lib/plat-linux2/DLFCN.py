@@ -74,6 +74,15 @@ __USE_EXTERN_INLINES = 1
 # Included from gnu/stubs.h
 
 # Included from bits/dlfcn.h
+<<<<<<< HEAD
+RTLD_LAZY = 0x00001
+RTLD_NOW = 0x00002
+RTLD_BINDING_MASK = 0x3
+RTLD_NOLOAD = 0x00004
+RTLD_GLOBAL = 0x00100
+RTLD_LOCAL = 0
+RTLD_NODELETE = 0x01000
+=======
 # PATCHED FOR ANDROID (the only supported symbols are):
 # enum {
 #  RTLD_NOW  = 0,
@@ -88,3 +97,4 @@ RTLD_NOLOAD = 0x00000
 RTLD_GLOBAL = 0x00002
 RTLD_LOCAL = 0
 RTLD_NODELETE = 0x00000
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92

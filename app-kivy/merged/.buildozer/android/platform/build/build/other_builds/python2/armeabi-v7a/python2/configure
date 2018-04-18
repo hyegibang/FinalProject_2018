@@ -5731,7 +5731,11 @@ then
   { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether gcc supports ParseTuple __format__" >&5
 $as_echo_n "checking whether gcc supports ParseTuple __format__... " >&6; }
   save_CFLAGS=$CFLAGS
+<<<<<<< HEAD
+  CFLAGS="$CFLAGS -Werror"
+=======
   CFLAGS="$CFLAGS -Werror -Wformat"
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -13673,7 +13677,11 @@ $as_echo_n "checking for %lld and %llu printf() format support... " >&6; }
   $as_echo_n "(cached) " >&6
 else
   if test "$cross_compiling" = yes; then :
+<<<<<<< HEAD
+  ac_cv_have_long_long_format=no
+=======
   ac_cv_have_long_long_format="cross -- assuming yes"
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
@@ -13725,13 +13733,24 @@ fi
 $as_echo "$ac_cv_have_long_long_format" >&6; }
 fi
 
+<<<<<<< HEAD
+if test "$ac_cv_have_long_long_format" = yes
+=======
 if test "$ac_cv_have_long_long_format" != no
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 then
 
 $as_echo "#define PY_FORMAT_LONG_LONG \"ll\"" >>confdefs.h
 
 fi
 
+<<<<<<< HEAD
+if test $ac_sys_system = Darwin
+then
+	LIBS="$LIBS -framework CoreFoundation"
+fi
+=======
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for %zd printf() format support" >&5

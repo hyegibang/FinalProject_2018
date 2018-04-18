@@ -71,6 +71,9 @@ if os.name == "ce":
     def find_library(name):
         return name
 
+<<<<<<< HEAD
+if os.name == "posix" and sys.platform == "darwin":
+=======
 # This patch overrides the find_library to look in the right places on
 # Android
 if True:
@@ -88,6 +91,7 @@ if True:
         return None
 
 elif os.name == "posix" and sys.platform == "darwin":
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
     from ctypes.macholib.dyld import dyld_find as _dyld_find
     def find_library(name):
         possible = ['lib%s.dylib' % name,

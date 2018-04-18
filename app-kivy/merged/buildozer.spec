@@ -1,10 +1,17 @@
 [app]
 
 # (str) Title of your application
+<<<<<<< HEAD
+title = My Application
+
+# (str) Package name
+package.name = myapp
+=======
 title = Merge
 
 # (str) Package name
 package.name = Merge
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -36,7 +43,11 @@ version = 0.1
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
+<<<<<<< HEAD
+requirements = kivy, python3crystax
+=======
 requirements = python3crystax,kivy
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -85,7 +96,11 @@ fullscreen = 0
 #android.presplash_color = #FFFFFF
 
 # (list) Permissions
+<<<<<<< HEAD
+#android.permissions = INTERNET
+=======
 android.permissions = INTERNET
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 # (int) Android API to use
 #android.api = 19
@@ -97,13 +112,21 @@ android.permissions = INTERNET
 #android.sdk = 20
 
 # (str) Android NDK version to use
+<<<<<<< HEAD
+android.ndk = 10.3.2
+=======
 #android.ndk = 10.3.2
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
 #android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
+<<<<<<< HEAD
+andoid.ndk_path = /opt
+=======
 #android.ndk_path = ~
+>>>>>>> d74d0bf936df1d1fff1ea8c4acbdff9acd625b92
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
 #android.sdk_path =
