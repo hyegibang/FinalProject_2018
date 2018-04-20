@@ -12,13 +12,13 @@ def enum_window_titles():
     titles = []
     win32gui.EnumWindows(callback, None)
     return titles
-def print_windows():
+def print_windows(filter = "SOLIDWORKS"):
     """
     Prints a list of every open window whose name is longer than 8 characters.
     """
     titles = enum_window_titles()
     for title in titles:
-        if len(title) > 8:
+        if len(title) > 8 and filter in title:
             print(title)
     """
     for i in range(100):
@@ -26,14 +26,19 @@ def print_windows():
         time.sleep(1)
     """
 
-def get_current_window(file_types = ["SLDASM", "SLDPRT"]):
-    window_type = "SOLIDWORKS Education Edition"
+def get_current_window():
+    file_types = ["SLDASM", "SLDPRT"]
     current_window = win32gui.GetWindowText(win32gui.GetForegroundWindow())
-    if window_type in (current_window):
-        return True
-    else:
-        return current_window
-        #TODO: Integrate part/assembly/drawing/sketch detection
-        if current_window.split(".")[-1] == "SLDASM":
-            return "Assembly"
-    #    if current_window.split(".")[-1] ==
+    if "SOLIDWORKS" in current_window:
+        #TODO: More dynamic and flexible name finding
+        name = current_window.split('[')[-1].split(']')[0].split('*')[0]
+        for file_type in file_types:
+            if file_type in current_window:
+                return ((str(name), str(file_type)))
+    return (("Invalid window type"))
+if __name__ == '__main__':
+    for i in range(10):
+        a = get_current_window()
+        print (a)
+        print(type(a))
+        time.sleep(1)

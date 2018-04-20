@@ -1,19 +1,14 @@
 import socket
-print(socket.gethostname())
-HOST = "LAPTOP-C2CB21R0"
-#HOST = "311Z7H2"
-print(socket.gethostbyname('192.168.35.245'))
-print(socket.gethostbyname(HOST))
-PORT = 6969
-s = socket.socket()
-s.connect((HOST, PORT))
-print("connected!")
-s.send(bytes("hello world", 'utf-8'))
-"""
-connection, address = s.accept()
-print('connected by ', address)
-while True:
-    data = conn.recv(1024)
-    print(data)
-    if not data: break
-"""
+
+def start_client(HOST, message, PORT = 6969, verbose = False):
+    if verbose:
+        print(socket.gethostbyname(HOST))
+    s = socket.socket()
+    print(HOST, PORT)
+    s.connect((HOST, PORT))
+    if verbose:
+        print("connected!")
+    s.send(bytes(message, 'utf-8'))
+
+if __name__ == '__main__':
+    start_client(HOST = "311Z7H2", message = 'hellow world', PORT = 6969)
