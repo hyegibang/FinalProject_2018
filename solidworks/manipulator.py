@@ -1,3 +1,7 @@
+"""
+DEPRECIATED, NO LONGER USED.
+"""
+
 import socket
 import sys
 import time

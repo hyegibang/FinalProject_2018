@@ -24,7 +24,7 @@ threshold = 15
 current_name = None
 current_type = "SLDASM"
 #A constant that divides the orientation and button data in the data stream
-split_key = "XYZ"
+split_key = "button: "
 
 #Start the connections
 connection, address = start_server(PORT)
@@ -40,11 +40,15 @@ while True:
         data = connection.recv(1024)
         data = str(data)[2: -1]
         #Extracting the orientaiton part of the stream
-        orientation = data.split(split_key)[0]
-        print(orientation)
-        if "Hello World" not in orientation and len(data.split(split_key)) == 2:
+        orientation = data
+        #Filter out opening transmission confirmation
+        if "Hello World" not in orientation and split_key not in orientation:
+            #split apart roll and raw from the orientation data
             orientation_split = orientation.split(',')
-            orientation_split = [float(pos) for pos in orientation_split]
+            try:
+                orientation_split = [float(pos) for pos in orientation_split]
+            except:
+                pass
             pitch = orientation_split[0]
             roll = orientation_split[1]
             #update the command list appropriately based on orientation
@@ -56,22 +60,25 @@ while True:
                 commands.append("left")
             elif roll < -threshold:
                 commands.append("right")
-        """
-        #Look at the portion of the datastream corresponding to the button press
-        keys = data.split(split_key)[-1].split(',')
-        #Add the key press to the command list
-        for key in keys:
-            commands.append(key)
+            print("rotating")
+
+        if split_key in data:
+            #Look at the portion of the datastream corresponding to the button press
+            keys = data.split(split_key)[-1].split(',')
+            #Add the key press to the command list
+            for key in keys:
+                print(str(key))
+                commands.append(key)
+
 
         """
-
         #TODO: Sketch and drawing detection by comparing past and present window
         #names. This section is under development.
         if current_type != window_info[0]:
             start_client(address[0], window_info[1], PORT)
             current_type = window_info[0]
             print("updating phone mode to: ", window_info[0])
-
+        """
 
         #input commands as keystrokes
         keystroke(commands)

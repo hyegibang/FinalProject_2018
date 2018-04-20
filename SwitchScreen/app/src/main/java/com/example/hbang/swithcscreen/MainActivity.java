@@ -18,7 +18,7 @@ import java.net.Socket;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener , SensorEventListener {
-    public final static String HOST = "192.168.33.210";
+    public final static String HOST = "192.168.34.203";
     public final static int PORT = 6969;
     private static String TAG = "MainActivity";
     private SensorManager oriSensorManager;
