@@ -10,7 +10,6 @@
 * Brief exploration and explanation of the project
 * Description of the high level architecture Design
 * Current Project Demo
-* Background
 * Next Steps
 * Q&A
 
