@@ -37,7 +37,7 @@ while True:
         #Extracting the orientaiton part of the stream
         orientation = data.split(split_key)[0]
         print(orientation)
-        if "Hello World" not in orientation:
+        if "Hello World" not in orientation and len(data.split(split_key)) == 2:
             orientation_split = orientation.split(',')
             orientation_split = [float(pos) for pos in orientation_split]
             pitch = orientation_split[0]

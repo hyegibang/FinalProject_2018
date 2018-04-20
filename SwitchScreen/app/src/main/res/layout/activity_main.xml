@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/polygon"
+        android:layout_width="wrap_content"
+        android:layout_height="79dp"
+        android:layout_alignTop="@+id/arc"
+        android:layout_centerHorizontal="true"
+        android:text="Polygon" />
+
+    <Button
+        android:id="@+id/arc"
+        android:layout_width="wrap_content"
+        android:layout_height="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/line"
+        android:layout_marginTop="190dp"
+        android:text="arc " />
+
+    <Button
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="93dp"
+        android:text="Line" />
+
+    <Button
+        android:id="@+id/slot"
+        android:layout_width="wrap_content"
+        android:layout_height="79dp"
+        android:layout_alignStart="@+id/rectangle"
+        android:layout_alignTop="@+id/arc"
+        android:text="Slot" />
+
+    <Button
+        android:id="@+id/ellipse"
+        android:layout_width="wrap_content"
+        android:layout_height="79dp"
+        android:layout_alignTop="@+id/rectangle"
+        android:layout_centerHorizontal="true"
+        android:text="Ellipse" />
+
+    <TextView
+        android:id="@+id/sketchin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="Sketch"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <Button
+        android:id="@+id/rectangle"
+        android:layout_width="88dp"
+        android:layout_height="79dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/line"
+        android:layout_marginEnd="40dp"
+        android:text="rectangle" />
+
+    <Button
+        android:id="@+id/backhome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/rectangle"
+        android:layout_marginBottom="34dp"
+        android:text="return" />
+</RelativeLayout>
