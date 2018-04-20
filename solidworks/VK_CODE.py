@@ -1,3 +1,7 @@
+"""
+DEPRECIATED. NO LONGER USED.
+"""
+
 VK_CODE = {'backspace':0x08,
            'tab':0x09,
            'clear':0x0C,

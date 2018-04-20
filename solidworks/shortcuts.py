@@ -23,11 +23,15 @@ def keystroke(inputs):
     the correct keys. In this way, we can take advantage of preprogramed
     solidworks shortcuts.
     """
+    #For each input:
     for input in inputs:
         if len(input) == 1:
+            #If the input is a character, just press that character button
             keyboard.press(input)
         else:
+            #reference the dict for the true button input
             keyboard.press(Key[input])
+    #Manage keyboard releases. Needed for multi-key shortcuts
     for input in inputs:
         if len(input) == 1:
             keyboard.release(input)
