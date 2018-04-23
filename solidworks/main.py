@@ -47,20 +47,21 @@ while True:
             orientation_split = orientation.split(',')
             try:
                 orientation_split = [float(pos) for pos in orientation_split]
+                pitch = orientation_split[0]
+                roll = orientation_split[1]
+                #update the command list appropriately based on orientation
+                if pitch > threshold:
+                    commands.append("up")
+                elif pitch < -threshold:
+                    commands.append("down")
+                if roll > threshold:
+                    commands.append("left")
+                elif roll < -threshold:
+                    commands.append("right")
+                print("rotating")
             except:
                 pass
-            pitch = orientation_split[0]
-            roll = orientation_split[1]
-            #update the command list appropriately based on orientation
-            if pitch > threshold:
-                commands.append("up")
-            elif pitch < -threshold:
-                commands.append("down")
-            if roll > threshold:
-                commands.append("left")
-            elif roll < -threshold:
-                commands.append("right")
-            print("rotating")
+
 
         if split_key in data:
             #Look at the portion of the datastream corresponding to the button press
