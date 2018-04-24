@@ -25,7 +25,7 @@ In addition, you will need to install [SensorStream](https://play.google.com/sto
 ## Usage
 To use this program, you must first know your IP address. In the windows console, type:
 `ipconfig`
-which will display some information about your computer's wireless connections. Remember the sequence of numbers that represent your IPv4 Address.
+which will display some information about your computer's wireless connections. Remember the sequence of numbers that represent your IPv4 Address..
 
 Next, you must configure the SensorStream app. Upon opening, go to the "Toggle Sensors" section at the top. Once at the new page, check the box for "Orientation" and the box that says "Include User-Checked Sensor Data in Stream". Go back to the "Preferences" page by pressing the left button at the top. For the target IP address, ensure your phone is on the same wifi as your computer, and then type in the IPv4 address from earlier. For the port number, any valid port number can be chosen (ex: 5555, 8888, 23681, etc). Next check the radio button that says "UDP Stream". Finally, press the button that says "Start Stream".
 
