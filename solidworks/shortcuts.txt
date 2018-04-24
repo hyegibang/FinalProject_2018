@@ -1,0 +1,32 @@
+Sketch shortcuts:
+Smart Dimension: s
+Measure: e
+Construction: q
+Line: l
+Circle: c
+Rectangle: r
+Arc: a
+Mirror: m
+escape: escape
+
+Part shortcuts:
+Measure: e
+extrude: z
+revolve: x
+cut: c
+hole wizard: v
+fillet: b
+sweep: n
+loft: d
+escape: escape
+
+Assembly shortcuts:
+Measure: e
+Mate: w
+Mass Properties: q
+Interference detection: i
+Open new part: t
+exploded view: NO SHORTCUT
+plane: p
+center of mass: o
+escape: escape
