@@ -13,7 +13,7 @@
         android:layout_height="79dp"
         android:layout_alignTop="@+id/arc"
         android:layout_centerHorizontal="true"
-        android:text="Polygon" />
+        android:text="e" />
 
     <Button
         android:id="@+id/arc"
@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/line"
         android:layout_marginTop="190dp"
-        android:text="arc " />
+        android:text="d" />
 
     <Button
         android:id="@+id/line"
@@ -31,7 +31,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="41dp"
         android:layout_marginTop="93dp"
-        android:text="Line" />
+        android:text="a" />
 
     <Button
         android:id="@+id/slot"
@@ -39,7 +39,7 @@
         android:layout_height="79dp"
         android:layout_alignStart="@+id/rectangle"
         android:layout_alignTop="@+id/arc"
-        android:text="Slot" />
+        android:text="f" />
 
     <Button
         android:id="@+id/ellipse"
@@ -47,16 +47,16 @@
         android:layout_height="79dp"
         android:layout_alignTop="@+id/rectangle"
         android:layout_centerHorizontal="true"
-        android:text="Ellipse" />
+        android:text="b" />
 
     <TextView
-        android:id="@+id/sketchin"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:text="Sketch"
+        android:text="CAD Buddy"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <Button
@@ -66,14 +66,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/line"
         android:layout_marginEnd="40dp"
-        android:text="rectangle" />
+        android:text="c" />
 
     <Button
-        android:id="@+id/backhome"
+        android:id="@+id/esc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/rectangle"
         android:layout_marginBottom="34dp"
-        android:text="return" />
+        android:text="esc" />
 </RelativeLayout>

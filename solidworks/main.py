@@ -16,6 +16,7 @@ from server import start_server
 from client import start_client
 
 #local server constants
+HOST = "192.168.32.135"
 PORT = 6969
 #Degree/Rotation Constants
 degree_steps = 5
@@ -72,14 +73,14 @@ while True:
                 commands.append(key)
 
 
-        """
+
         #TODO: Sketch and drawing detection by comparing past and present window
         #names. This section is under development.
         if current_type != window_info[0]:
             start_client(address[0], window_info[1], PORT)
             current_type = window_info[0]
             print("updating phone mode to: ", window_info[0])
-        """
+
 
         #input commands as keystrokes
         keystroke(commands)

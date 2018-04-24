@@ -23,4 +23,4 @@ def start_client(HOST, message, PORT = 6969, verbose = False):
     s.send(bytes(message, 'utf-8'))
 
 if __name__ == '__main__':
-    start_client(HOST = "311Z7H2", message = 'hellow world', PORT = 6969)
+    start_client(HOST = "5V8Y7H2", message = 'hellow world', PORT = 6969)
