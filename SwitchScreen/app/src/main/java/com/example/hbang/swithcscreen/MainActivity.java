@@ -26,19 +26,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final static String HOST = "192.168.33.210";
     public final static int PORT = 6969;
     private static String TAG = "MainActivity";
+
+    // Orientation for rotation
     private SensorManager oriSensorManager;
     private Sensor oriSensor;
     private double xTheta;
     private double yTheta;
     private double zTheta;
-    Button line;
-    Button ellipse;
-    Button rectangle;
-    Button arc;
-    Button polygon;
-    Button slot;
-    private String[] buttonKeys = {"a", "b", "c", "d", "e", "f","esc"};
+
+    // Initialize settings for shortcut
+    Button AButton;
+    Button BButton;
+    Button CButton;
+    Button DButton;
+    Button EButton;
+    Button FButton;
+    Button GButton;
+    Button HButton;
+    Button IButton;
+    Button JButton;
+    Button esc;
+
+    private String[] buttonKeys = {"a", "b", "c", "d", "e", "f","g", "h", "i", "j"};
     byte bytes[];
+    TextView title;
 
     Socket s;
     PrintWriter pw;
@@ -52,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
+        // Client Server
         try {
             s = new Socket(HOST, PORT);
             pw = new PrintWriter(s.getOutputStream());
@@ -64,19 +76,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recieveThread.start();
 
 
-        line = findViewById(R.id.line);
-        ellipse = findViewById(R.id.ellipse);
-        rectangle = findViewById(R.id.rectangle);
-        arc = findViewById(R.id.arc);
-        polygon = findViewById(R.id.polygon);
-        slot = findViewById(R.id.slot);
+        AButton = findViewById(R.id.AButton);
+        BButton = findViewById(R.id.BButton);
+        CButton = findViewById(R.id.CButton);
+        DButton = findViewById(R.id.DButton);
+        EButton = findViewById(R.id.HButton);
+        FButton = findViewById(R.id.FButton);
+        GButton = findViewById(R.id.GButton);
+        HButton = findViewById(R.id.HButton);
+        IButton = findViewById(R.id.IButton);
+        esc = findViewById(R.id.esc);
+        title = findViewById(R.id.title);
 
-        line.setOnClickListener(this);
-        ellipse.setOnClickListener(this);
-        rectangle.setOnClickListener(this);
-        arc.setOnClickListener(this);
-        polygon.setOnClickListener(this);
-        slot.setOnClickListener(this);
+        AButton.setOnClickListener(this);
+        BButton.setOnClickListener(this);
+        CButton.setOnClickListener(this);
+        DButton.setOnClickListener(this);
+        EButton.setOnClickListener(this);
+        FButton.setOnClickListener(this);
+        GButton.setOnClickListener(this);
+        HButton.setOnClickListener(this);
+        IButton.setOnClickListener(this);
+        esc.setOnClickListener(this);
 
         oriSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         oriSensor = oriSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
@@ -84,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    // Server - Removed from a individual class due to getApplicationContent Error 4.24.2018
     class MyServerThread implements Runnable {
         Socket s;
         ServerSocket ss;
@@ -96,39 +118,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             try {
                 ss = new ServerSocket(6969);
-                System.out.println("Running");
+                System.out.println("Server Connected");
                 while (true) {
                     s = ss.accept();
                     isr = new InputStreamReader(s.getInputStream());
                     bufferedReader = new BufferedReader(isr);
                     message = bufferedReader.readLine();
 
+                    // Changes the values of string array based on the state
                     runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
                             if (message.equals("SLDPRT")) {
-                                buttonKeys = new String[]{"l", "e", "r", "a", "p", "s","esc"};
-                                line.setText("line");
-                                ellipse.setText("ellipse");
-                                rectangle.setText("rectangle");
-                                arc.setText("arc");
-                                polygon.setText("polygon");
-                                slot.setText("slot");
+                                buttonKeys = new String[]{"l", "c", "r", "z", "x", "v", "b", "e", "s"};
+                                AButton.setText("line");
+                                BButton.setText("circle");
+                                CButton.setText("rectangle");
+                                DButton.setText("extrude");
+                                EButton.setText("Revolve");
+                                FButton.setText("cut");
+                                GButton.setText("fillet");
+                                HButton.setText("measure");
+                                IButton.setText("smart dimension");
+                                title.setText("Sketch");
+                            }
+
+                            if (message.equals("SLDASM")) {
+                                buttonKeys = new String[]{"w", "q", "i", "o", "t", "p", "o","e",""};
+                                AButton.setText("Mate");
+                                BButton.setText("Mass Properties");
+                                CButton.setText("Interface Detection");
+                                DButton.setText("Open new part");
+                                EButton.setText("Exploded View");
+                                FButton.setText("Plane");
+                                GButton.setText("Center of Mass");
+                                HButton.setText("measure");
+                                IButton.setText("");
+                                title.setText("Assembly");
                             }
                         }
                     });
                     h.post(new Runnable() {
                         public void run() {
                             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
-                // in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                //String response = in.readLine();
-                //System.out.print(response);
-                //pw.write(message);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -152,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View V) {
         String key = "button: ";
         switch (V.getId()) {
-            case R.id.line:
+            case R.id.AButton:
                 String a = ((Button) V).getText().toString();
                 Toast.makeText(this, a, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[0];
@@ -161,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.flush();
                 break;
 
-            case R.id.ellipse:
+            case R.id.BButton:
                 String b = ((Button) V).getText().toString();
                 Toast.makeText(this, b, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[1];
@@ -170,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.flush();
                 break;
 
-            case R.id.rectangle:
+            case R.id.CButton:
                 String c = ((Button) V).getText().toString();
                 Toast.makeText(this, c, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[2];
@@ -179,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.flush();
                 break;
 
-            case R.id.arc:
+            case R.id.DButton:
                 String d = ((Button) V).getText().toString();
                 Toast.makeText(this, d, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[3];
@@ -188,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.flush();
                 break;
 
-            case R.id.polygon:
+            case R.id.EButton:
                 String e = ((Button) V).getText().toString();
                 Toast.makeText(this, e, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[4];
@@ -197,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.flush();
                 break;
 
-            case R.id.slot:
+            case R.id.FButton:
                 String f = ((Button) V).getText().toString();
                 Toast.makeText(this, f, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[5];
@@ -206,10 +243,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.flush();
                 break;
 
+            case R.id.GButton:
+                String g = ((Button) V).getText().toString();
+                Toast.makeText(this, g, Toast.LENGTH_SHORT).show();
+                key += buttonKeys[6];
+                System.out.println(key);
+                pw.write(key);
+                pw.flush();
+                break;
+
+            case R.id.HButton:
+                String h = ((Button) V).getText().toString();
+                Toast.makeText(this, h, Toast.LENGTH_SHORT).show();
+                key += buttonKeys[7];
+                System.out.println(key);
+                pw.write(key);
+                pw.flush();
+                break;
+
+            case R.id.IButton:
+                String i = ((Button) V).getText().toString();
+                Toast.makeText(this, i, Toast.LENGTH_SHORT).show();
+                key += buttonKeys[8];
+                System.out.println(key);
+                pw.write(key);
+                pw.flush();
+                break;
+
             case R.id.esc:
                 String esc = ((Button) V).getText().toString();
                 Toast.makeText(this, esc, Toast.LENGTH_SHORT).show();
-                key += buttonKeys[6];
+                key += "esc";
                 System.out.println(key);
                 pw.write(key);
                 pw.flush();

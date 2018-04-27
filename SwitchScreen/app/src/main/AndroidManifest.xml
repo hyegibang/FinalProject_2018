@@ -22,9 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sketchin" />
-        <activity android:name=".featurein" />
-        <activity android:name=".evaluatein" />
     </application>
 
 </manifest>
