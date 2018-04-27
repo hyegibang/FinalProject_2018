@@ -6,7 +6,7 @@ Circle: c
 Rectangle: r
 extrude: z
 revolve: x
-cut: c
+cut: v
 fillet: b
 escape: escape
 
@@ -15,8 +15,8 @@ Measure: e
 Mate: w
 Mass Properties: q
 Interference detection: i
-Open new part: t
-exploded view: NO SHORTCUT
+Open new part: NO SHORTCUT
+exploded view: t
 plane: p
 center of mass: o
 escape: escape

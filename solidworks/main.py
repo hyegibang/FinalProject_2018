@@ -76,10 +76,10 @@ while True:
 
         #TODO: Sketch and drawing detection by comparing past and present window
         #names. This section is under development.
-        if current_type != window_info[0]:
+        if current_type != window_info[1]:
             start_client(address[0], window_info[1], PORT)
-            current_type = window_info[0]
-            print("updating phone mode to: ", window_info[0])
+            current_type = window_info[1]
+            print("updating phone mode to: ", window_info[1])
 
 
         #input commands as keystrokes
