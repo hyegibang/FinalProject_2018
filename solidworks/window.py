@@ -27,6 +27,10 @@ def print_windows(filter = "SOLIDWORKS"):
     """
 
 def get_current_window():
+    """
+    Returns a tuple with either the file name and the file type of the current
+    window, or a tuple containing the string "Invalid window type"
+    """
     file_types = ["SLDASM", "SLDPRT"]
     current_window = win32gui.GetWindowText(win32gui.GetForegroundWindow())
     if "SOLIDWORKS" in current_window:
@@ -37,7 +41,7 @@ def get_current_window():
                 return ((str(name), str(file_type)))
     return (("Invalid window type"))
 if __name__ == '__main__':
-    for i in range(10):
+    for i in range(30):
         a = get_current_window()
         print (a)
         print(type(a))
