@@ -16,7 +16,7 @@ from server import start_server
 from client import start_client
 
 #local server constants
-HOST = "192.168.32.135"
+HOST = "10.7.64.36"
 PORT = 6969
 #Degree/Rotation Constants
 degree_steps = 5
