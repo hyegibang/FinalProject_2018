@@ -1,3 +1,5 @@
+Note: our current website can be found at http://hyegibang.github.io/MouseRemote
+
 # CAD Buddy
 ### Softdes Final Project, Spring 2018
 This project explores the use of a smart phone as an advanced form of input for laptop computers. Rather than using a mouse with relatively few sensors, buttons, and methods for feedback, we decided to try to leverage the many sensors and features of smartphones in order to create a cheap and effective tool for interacting with computers.
