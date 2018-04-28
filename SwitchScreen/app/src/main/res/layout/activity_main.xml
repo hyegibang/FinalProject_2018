@@ -1,108 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_centerInParent="true"
+    android:layout_centerVertical="true"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context=".MainActivity"
+    android:id="@+id/relativeLayout">
 
     <Button
         android:id="@+id/GButton"
         android:layout_width="wrap_content"
         android:layout_height="79dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/DButton"
-        android:layout_marginBottom="143dp"
-        android:text="g" />
+        android:text="g"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="277dp" />
 
     <Button
         android:id="@+id/HButton"
         android:layout_width="199dp"
         android:layout_height="79dp"
-        android:layout_alignBottom="@+id/esc"
-        android:layout_alignStart="@+id/GButton"
-        android:text="h" />
+        android:text="h"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="384dp" />
 
     <Button
         android:id="@+id/EButton"
         android:layout_width="wrap_content"
         android:layout_height="79dp"
-        android:layout_alignTop="@+id/DButton"
-        android:layout_centerHorizontal="true"
-        android:text="e" />
+        android:text="e"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="188dp" />
 
     <Button
         android:id="@+id/DButton"
         android:layout_width="wrap_content"
         android:layout_height="79dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/AButton"
-        android:layout_marginTop="190dp"
-        android:text="d" />
+        android:layout_marginTop="24dp"
+        android:text="d"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/AButton"
+        tools:layout_editor_absoluteX="40dp" />
 
     <Button
         android:id="@+id/AButton"
-        android:layout_width="wrap_content"
-        android:layout_height="79dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="93dp"
-        android:text="a" />
+        android:layout_width="96dp"
+        android:layout_height="88dp"
+        android:text="A"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="76dp" />
 
     <Button
         android:id="@+id/IButton"
         android:layout_width="wrap_content"
         android:layout_height="79dp"
-        android:layout_alignTop="@+id/GButton"
-        android:layout_alignStart="@+id/EButton"
-        android:layout_centerHorizontal="true"
-        android:text="i" />
+        android:text="i"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="277dp" />
 
     <Button
         android:id="@+id/FButton"
         android:layout_width="wrap_content"
         android:layout_height="79dp"
-        android:layout_alignStart="@+id/CButton"
-        android:layout_alignTop="@+id/DButton"
-        android:layout_centerHorizontal="true"
-
-        android:text="f" />
+        android:text="f"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="178dp" />
 
     <Button
         android:id="@+id/BButton"
-        android:layout_width="wrap_content"
-        android:layout_height="79dp"
-        android:layout_alignTop="@+id/CButton"
-        android:layout_centerHorizontal="true"
-        android:text="b" />
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="b"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/AButton"
+        app:layout_constraintTop_toTopOf="@+id/AButton" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
         android:text="CAD Buddy"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/CButton"
-        android:layout_width="88dp"
-        android:layout_height="79dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/AButton"
-        android:layout_marginEnd="40dp"
-        android:text="c" />
+        android:layout_width="96"
+        android:layout_height="88"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="8dp"
+        android:text="c"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/BButton"
+        app:layout_constraintTop_toTopOf="@+id/BButton" />
 
     <Button
         android:id="@+id/esc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/CButton"
-        android:layout_marginBottom="34dp"
-        android:text="esc" />
+        android:text="esc"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="384dp" />
+
     <!--
     <EditText
         android:id="@+id/valueMeasure"
@@ -125,4 +154,4 @@
         android:text="submit" />
         -->
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

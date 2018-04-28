@@ -23,7 +23,7 @@ import java.net.Socket;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
-    public final static String HOST = "10.7.64.36";
+    public final static String HOST = "10.7.24.147";
     public final static int PORT = 6969;
     private static String TAG = "MainActivity";
 
@@ -135,15 +135,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void run() {
                             if (message.equals("SLDPRT")) {
                                 buttonKeys = new String[]{"l", "c", "r", "z", "x", "v", "b", "e", "s"};
-                                AButton.setText("line");
+                                AButton.setText("Line");
+                               // AButton.setBackgroundResource(R.drawable.line);
                                 BButton.setText("circle");
-                                CButton.setText("rectangle");
+                              //  BButton.setBackgroundResource(R.drawable.circle);
+                                CButton.setText("rect");
+                               // CButton.setBackgroundResource(R.drawable.rectangle);
                                 DButton.setText("extrude");
+                               // DButton.setBackgroundResource(R.drawable.extrude);
                                 EButton.setText("Revolve");
+                              //  EButton.setBackgroundResource(R.drawable.revolve);
                                 FButton.setText("cut");
+                               // FButton.setBackgroundResource(R.drawable.cut);
                                 GButton.setText("fillet");
+                              //  GButton.setBackgroundResource(R.drawable.filet);
                                 HButton.setText("measure");
+                             //   HButton.setBackgroundResource(R.drawable.measure);
                                 IButton.setText("smartD");
+                               // IButton.setBackgroundResource(R.drawable.smartd);
                                 title.setText("Sketch");
                             }
 
