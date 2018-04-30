@@ -23,7 +23,7 @@ import java.net.Socket;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
-    public final static String HOST = "10.7.24.147";
+    public final static String HOST = "10.7.64.109";
     public final static int PORT = 6969;
     private static String TAG = "MainActivity";
 
@@ -50,6 +50,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String[] buttonKeys = {"a", "b", "c", "d", "e", "f","g", "h", "i", "j"};
     byte bytes[];
     TextView title;
+    TextView AText;
+    TextView BText;
+    TextView CText;
+    TextView DText;
+    TextView EText;
+    TextView FText;
+    TextView GText;
+    TextView HText;
    // TextView valueM;
 
     Socket s;
@@ -88,6 +96,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         IButton = findViewById(R.id.IButton);
         esc = findViewById(R.id.esc);
         title = findViewById(R.id.title);
+        AText = findViewById(R.id.AText);
+        BText = findViewById(R.id.BText);
+        CText = findViewById(R.id.CText);
+        DText = findViewById(R.id.DText);
+        EText = findViewById(R.id.EText);
+        FText = findViewById(R.id.FText);
+        GText = findViewById(R.id.GText);
+        HText = findViewById(R.id.HText);
+
+
         //valueM = findViewById(R.id.valueMeasure);
         //submit = findViewById(R.id.submit);
 
@@ -135,25 +153,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void run() {
                             if (message.equals("SLDPRT")) {
                                 buttonKeys = new String[]{"l", "c", "r", "z", "x", "v", "b", "e", "s"};
-                                AButton.setText("Line");
-                               // AButton.setBackgroundResource(R.drawable.line);
-                                BButton.setText("circle");
-                              //  BButton.setBackgroundResource(R.drawable.circle);
-                                CButton.setText("rect");
-                               // CButton.setBackgroundResource(R.drawable.rectangle);
-                                DButton.setText("extrude");
-                               // DButton.setBackgroundResource(R.drawable.extrude);
-                                EButton.setText("Revolve");
-                              //  EButton.setBackgroundResource(R.drawable.revolve);
-                                FButton.setText("cut");
-                               // FButton.setBackgroundResource(R.drawable.cut);
-                                GButton.setText("fillet");
-                              //  GButton.setBackgroundResource(R.drawable.filet);
-                                HButton.setText("measure");
-                             //   HButton.setBackgroundResource(R.drawable.measure);
-                                IButton.setText("smartD");
-                               // IButton.setBackgroundResource(R.drawable.smartd);
+                                //AButton.setText("Line");
+                               AButton.setBackgroundResource(R.drawable.line);
+                               // BButton.setText("circle");
+                              BButton.setBackgroundResource(R.drawable.circle);
+                              //  CButton.setText("rect");
+                               CButton.setBackgroundResource(R.drawable.rectangle);
+                               DButton.setBackgroundResource(R.drawable.extrude);
+                               EButton.setBackgroundResource(R.drawable.revolve);
+                               FButton.setBackgroundResource(R.drawable.cut);
+                               GButton.setBackgroundResource(R.drawable.filet);
+                               HButton.setBackgroundResource(R.drawable.measure);
+                               IButton.setBackgroundResource(R.drawable.smartd);
+
                                 title.setText("Sketch");
+                                AText.setText("LINE");
+                                BText.setText("CIRCLE");
+                                CText.setText("RECT");
+                                DText.setText("EXTRUDE");
+                                EText.setText("REVOLVE");
+                                FText.setText("CUT");
+                                GText.setText("FILLET");
+                                HText.setText("MEASURE");
+
+
                             }
 
                             if (message.equals("SLDASM")) {
