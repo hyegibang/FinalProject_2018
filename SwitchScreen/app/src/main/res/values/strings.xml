@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SwithcScreen</string>
+    <string name="error_login_msg">please fill any empty fields</string>
+    <string name="success_login_msg">successful</string>
 </resources>

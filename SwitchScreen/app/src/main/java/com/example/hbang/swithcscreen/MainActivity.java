@@ -5,11 +5,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.StrictMode;
@@ -23,7 +25,7 @@ import java.net.Socket;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
-    public final static String HOST = "10.7.64.109";
+    public final static String HOST = "10.7.24.135";
     public final static int PORT = 6969;
     private static String TAG = "MainActivity";
 
@@ -94,7 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         GButton = findViewById(R.id.GButton);
         HButton = findViewById(R.id.HButton);
         IButton = findViewById(R.id.IButton);
+
         esc = findViewById(R.id.esc);
+
         title = findViewById(R.id.title);
         AText = findViewById(R.id.AText);
         BText = findViewById(R.id.BText);
@@ -104,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FText = findViewById(R.id.FText);
         GText = findViewById(R.id.GText);
         HText = findViewById(R.id.HText);
-
 
         //valueM = findViewById(R.id.valueMeasure);
         //submit = findViewById(R.id.submit);
@@ -294,8 +297,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 System.out.println(key);
                 pw.write(key);
                 pw.flush();
-               // valueM.setVisibility(View.VISIBLE);
-               // submit.setVisibility(View.VISIBLE);
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.measure_input,null);
+                final EditText mPassword = mView.findViewById(R.id.valueinput);
+                Button mEnter = mView.findViewById(R.id.btnEnter);
+
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+                mEnter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if( !mPassword.getText().toString().isEmpty()){
+                            String inputVal = mPassword.getText().toString();
+                            Toast.makeText(MainActivity.this,
+                                    inputVal,
+                                    Toast.LENGTH_SHORT).show();
+                            pw.write(inputVal);
+                            System.out.println(inputVal);
+                            pw.flush();
+                            dialog.dismiss();
+                        }else{
+                            Toast.makeText(MainActivity.this,
+                                    R.string.error_login_msg,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
                 break;
 
             case R.id.IButton:
