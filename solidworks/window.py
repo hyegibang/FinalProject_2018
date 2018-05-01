@@ -1,3 +1,11 @@
+"""
+Jonathan Zerez, Hyegi Bang,
+Software Design, Spring 2018
+
+This script provides utilities for listing the current windows of the computer.
+The main and most important function in the context of this project is
+get_current_window() 
+"""
 import win32gui
 import time
 

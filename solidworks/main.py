@@ -3,8 +3,10 @@ Jonathan Zerez, Hyegi Bang
 Software Design, Spring 2018
 
 This is the main script that handles the server and client, as well as
-interactions with solidworks.
-
+interactions with solidworks. It parses data streaming from the
+phone, updates the current solidworks model view and activates shortcuts
+appropriately by emulating keyboard presses. It also tracks the state of the
+window open and sends that information to the phone.
 """
 
 import socket
@@ -62,8 +64,7 @@ while True:
                 print("rotating")
             except:
                 pass
-
-
+                
         if split_key in data:
             #Look at the portion of the datastream corresponding to the button press
             keys = data.split(split_key)[-1].split(',')
@@ -72,10 +73,6 @@ while True:
                 print(str(key))
                 commands.append(key)
 
-
-
-        #TODO: Sketch and drawing detection by comparing past and present window
-        #names. This section is under development.
         if current_type != window_info[1]:
             start_client(address[0], window_info[1], PORT)
             current_type = window_info[1]
