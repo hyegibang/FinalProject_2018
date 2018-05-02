@@ -18,13 +18,14 @@ sys.path.insert(0, '../Sockets')
 from server import start_server
 from client import start_client
 
-PORT = input("Input desired port number:")
+PORT = input("Input desired port number (Must be from 5000-65535):")
 try:
     PORT = int(PORT)
 except:
     print("Invalid port number. Shutting Down.")
     time.sleep(5)
     sys.exit()
+
 
 #Degree/Rotation Constants
 degree_steps = 5
