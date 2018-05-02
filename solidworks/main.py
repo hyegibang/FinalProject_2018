@@ -17,9 +17,13 @@ sys.path.insert(0, '../Sockets')
 from server import start_server
 from client import start_client
 
-#local server constants
-HOST = "10.7.64.36"
-PORT = 6969
+PORT = input("Input desired port number:")
+try:
+    PORT = int(PORT)
+except:
+    print("Invalid port number")
+    sys.exit()
+    
 #Degree/Rotation Constants
 degree_steps = 5
 threshold = 15
@@ -38,7 +42,7 @@ while True:
     window_info = get_current_window()
     print(window_info)
     #If the window is in a solidworks file
-    if len(window_info) > 1:
+    if window_info != "Invalid window type":
         commands = []
         data = connection.recv(1024)
         data = str(data)[2: -1]
@@ -64,7 +68,7 @@ while True:
                 print("rotating")
             except:
                 pass
-                
+
         if split_key in data:
             #Look at the portion of the datastream corresponding to the button press
             keys = data.split(split_key)[-1].split(',')

@@ -4,7 +4,7 @@ Software Design, Spring 2018
 
 This script provides utilities for listing the current windows of the computer.
 The main and most important function in the context of this project is
-get_current_window() 
+get_current_window()
 """
 import win32gui
 import time
@@ -42,12 +42,11 @@ def get_current_window():
     file_types = ["SLDASM", "SLDPRT"]
     current_window = win32gui.GetWindowText(win32gui.GetForegroundWindow())
     if "SOLIDWORKS" in current_window:
-        #TODO: More dynamic and flexible name finding
         name = current_window.split('[')[-1].split(']')[0].split('*')[0]
         for file_type in file_types:
             if file_type in current_window:
                 return ((str(name), str(file_type)))
-    return (("Invalid window type"))
+    return ("Invalid window type")
 if __name__ == '__main__':
     for i in range(30):
         a = get_current_window()

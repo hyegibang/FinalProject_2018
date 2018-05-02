@@ -12,7 +12,7 @@ def start_server(PORT = 6969):
     """
     #Initialize the host to the local machine.
     HOST = '0.0.0.0'
-    print(socket.gethostname())
+    print("Server running on:" + socket.gethostname())
     #Use TCP connections
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     #Create the server

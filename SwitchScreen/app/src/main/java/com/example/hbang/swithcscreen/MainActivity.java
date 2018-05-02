@@ -1,5 +1,6 @@
 package com.example.hbang.swithcscreen;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -25,8 +26,9 @@ import java.net.Socket;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
-    public final static String HOST = "10.7.24.135";
-    public final static int PORT = 6969;
+    //public final static String HOST = "10.7.64.13";
+    //public final static int PORT = 6969;
+
     private static String TAG = "MainActivity";
 
     // Orientation for rotation
@@ -67,23 +69,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "activity started");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Intent intent = getIntent();
+        final String HOST = intent.getStringExtra(ipconfig.IP_STRING);
+        final int PORT = Integer.parseInt(intent.getStringExtra(ipconfig.PORT_NUM));
+        Log.i(TAG, "ip is " + HOST);
+        Log.i(TAG, "port is " + PORT);
         // Client Server
         try {
+            Log.e(TAG, "socket failed");
             s = new Socket(HOST, PORT);
             pw = new PrintWriter(s.getOutputStream());
-            //pw.write(message);
+            pw.write("wifi is working");
         } catch (IOException e) {
             e.printStackTrace();
+
         }
 
-        Thread recieveThread = new Thread(new MyServerThread());
+        Thread recieveThread = new Thread(new MyServerThread(PORT));
         recieveThread.start();
 
 
@@ -131,21 +140,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Server - Removed from a individual class due to getApplicationContent Error 4.24.2018
     class MyServerThread implements Runnable {
-        Socket s;
+        Socket recieveSocket;
         ServerSocket ss;
         InputStreamReader isr;
         BufferedReader bufferedReader;
         String message;
         Handler h = new Handler();
+        int PORT;
 
+        public MyServerThread(int PORT_num) {
+            PORT = PORT_num;
+            Log.i("server thread", "port is " + PORT);
+        }
         public void run() {
-
             try {
-                ss = new ServerSocket(6969);
+                ss = new ServerSocket(PORT);
                 System.out.println("Server Connected");
                 while (true) {
-                    s = ss.accept();
-                    isr = new InputStreamReader(s.getInputStream());
+                    recieveSocket = ss.accept();
+                    isr = new InputStreamReader(recieveSocket.getInputStream());
                     bufferedReader = new BufferedReader(isr);
                     message = bufferedReader.readLine();
 
