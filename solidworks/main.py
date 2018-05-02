@@ -11,6 +11,7 @@ window open and sends that information to the phone.
 
 import socket
 import sys
+import time
 from shortcuts import keystroke
 from window import get_current_window
 sys.path.insert(0, '../Sockets')
@@ -21,9 +22,10 @@ PORT = input("Input desired port number:")
 try:
     PORT = int(PORT)
 except:
-    print("Invalid port number")
+    print("Invalid port number. Shutting Down.")
+    time.sleep(5)
     sys.exit()
-    
+
 #Degree/Rotation Constants
 degree_steps = 5
 threshold = 15
