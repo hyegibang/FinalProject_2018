@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView FText;
     TextView GText;
     TextView HText;
+    TextView IText;
    // TextView valueM;
 
     Socket s;
@@ -117,6 +118,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FText = findViewById(R.id.FText);
         GText = findViewById(R.id.GText);
         HText = findViewById(R.id.HText);
+        IText = findViewById(R.id.IText);
+
 
         //valueM = findViewById(R.id.valueMeasure);
         //submit = findViewById(R.id.submit);
@@ -169,18 +172,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void run() {
                             if (message.equals("SLDPRT")) {
                                 buttonKeys = new String[]{"l", "c", "r", "z", "x", "v", "b", "e", "s"};
-                                //AButton.setText("Line");
-                               AButton.setBackgroundResource(R.drawable.line);
-                               // BButton.setText("circle");
-                              BButton.setBackgroundResource(R.drawable.circle);
-                              //  CButton.setText("rect");
-                               CButton.setBackgroundResource(R.drawable.rectangle);
-                               DButton.setBackgroundResource(R.drawable.extrude);
-                               EButton.setBackgroundResource(R.drawable.revolve);
-                               FButton.setBackgroundResource(R.drawable.cut);
-                               GButton.setBackgroundResource(R.drawable.filet);
-                               HButton.setBackgroundResource(R.drawable.measure);
-                               IButton.setBackgroundResource(R.drawable.smartd);
+                                AButton.setBackgroundResource(R.drawable.line);
+                                BButton.setBackgroundResource(R.drawable.circle);
+                                CButton.setBackgroundResource(R.drawable.rectangle);
+                                DButton.setBackgroundResource(R.drawable.extrude);
+                                EButton.setBackgroundResource(R.drawable.revolve);
+                                FButton.setBackgroundResource(R.drawable.cut);
+                                GButton.setBackgroundResource(R.drawable.filet);
+                                HButton.setBackgroundResource(R.drawable.measure);
+                                IButton.setBackgroundResource(R.drawable.smartd);
 
                                 title.setText("Sketch");
                                 AText.setText("LINE");
@@ -190,23 +190,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 EText.setText("REVOLVE");
                                 FText.setText("CUT");
                                 GText.setText("FILLET");
-                                HText.setText("MEASURE");
+                                HText.setText("Measure");
+                                IText.setText("SmartD");
+
+                                HButton.setVisibility(View.VISIBLE);
+                                IText.setVisibility(View.VISIBLE);
+
+                                EButton.setText("");
+                                FButton.setText("");
+                                GButton.setText("");
 
 
                             }
 
                             if (message.equals("SLDASM")) {
-                                buttonKeys = new String[]{"w", "q", "i", "o", "t", "p", "o","e",""};
-                                AButton.setText("Mate");
-                                BButton.setText("Mass Properties");
-                                CButton.setText("Interface Detection");
-                                DButton.setText("Open new part");
+                                buttonKeys = new String[]{"w", "q", "i", "o", "t", "p", "o","e","s"};
+                                AButton.setBackgroundResource(R.drawable.mate);
+                                BButton.setBackgroundResource(R.drawable.mass);
+                                CButton.setBackgroundResource(R.drawable.interference);
+                                DButton.setBackgroundResource(R.drawable.openpart);
+                                EButton.setBackgroundResource(R.drawable.grey);
+                                FButton.setBackgroundResource(R.drawable.grey);
+                                GButton.setBackgroundResource(R.drawable.grey);
+                                HButton.setBackgroundResource(R.drawable.measure);
+                                IButton.setBackgroundResource(R.drawable.smartd);
+
                                 EButton.setText("Exploded View");
                                 FButton.setText("Plane");
                                 GButton.setText("Center of Mass");
-                                HButton.setText("measure");
-                                IButton.setText("");
+
+                                AText.setText("Mate");
+                                BText.setText("Mass Properties");
+                                CText.setText("Interference Detection");
+                                DText.setText("New part");
+                                EText.setText("Exploded View");
+                                FText.setText("Plane");
+                                GText.setText("Center of Mass");
+                                HText.setText("Measure");
+                                IText.setText("SmartD");
                                 title.setText("Assembly");
+
+                                IButton.setVisibility(View.INVISIBLE);
+                                IText.setVisibility(View.INVISIBLE);
                             }
                         }
                     });
@@ -303,7 +328,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.flush();
                 break;
 
-            case R.id.HButton:
+            case R.id.IButton:
                 String h = ((Button) V).getText().toString();
                 Toast.makeText(this, h, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[7];
@@ -341,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
-            case R.id.IButton:
+            case R.id.HButton:
                 String i = ((Button) V).getText().toString();
                 Toast.makeText(this, i, Toast.LENGTH_SHORT).show();
                 key += buttonKeys[8];

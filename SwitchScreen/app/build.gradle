@@ -15,9 +15,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    buildToolsVersion '27.0.2'
-}
+    } }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

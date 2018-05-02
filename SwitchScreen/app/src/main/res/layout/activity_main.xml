@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,263 +10,176 @@
     tools:context=".MainActivity"
     android:id="@+id/relativeLayout">
 
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="149dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="CAD BUDDY"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/AButton"
+        android:layout_width="104dp"
+        android:layout_height="94dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="62dp"
+        android:layout_toStartOf="@+id/title" />
+
+    <Button
+        android:id="@+id/BButton"
+        android:layout_width="111dp"
+        android:layout_height="93dp"
+        android:layout_alignBottom="@+id/AButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/CButton"
+        android:layout_width="107dp"
+        android:layout_height="94dp"
+        android:layout_alignTop="@+id/AButton"
+        android:layout_toEndOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/AText"
+        android:layout_width="98dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/DButton"
+        android:layout_alignStart="@+id/AButton"
+        android:layout_marginBottom="-181dp"
+        android:layout_marginStart="8dp"
+        android:text="A"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/BText"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/BButton"
+        android:layout_alignTop="@+id/AText"
+        android:text="B"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/CText"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/AText"
+        android:layout_toEndOf="@+id/title"
+        android:text="C"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/DButton"
+        android:layout_width="102dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="247dp"
+        android:layout_toStartOf="@+id/title" />
+
+    <Button
+        android:id="@+id/EButton"
+        android:layout_width="110dp"
+        android:layout_height="82dp"
+        android:layout_alignStart="@+id/BButton"
+        android:layout_alignTop="@+id/DButton" />
+
+    <Button
+        android:id="@+id/FButton"
+        android:layout_width="107dp"
+        android:layout_height="82dp"
+        android:layout_alignTop="@+id/DButton"
+        android:layout_toEndOf="@+id/title" />
+
+    <Button
+        android:id="@+id/GButton"
+        android:layout_width="102dp"
+        android:layout_height="87dp"
+        android:layout_alignTop="@+id/HButton"
+        android:layout_toStartOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/DText"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/EText"
+        android:layout_toStartOf="@+id/title"
+        android:text="D"
+        android:textSize="18sp" />
+
     <TextView
         android:id="@+id/EText"
-        android:layout_width="79dp"
-        android:layout_height="39dp"
-        android:layout_below="@+id/EButton"
-        android:layout_marginEnd="17dp"
-        android:layout_toStartOf="@+id/CText"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="238dp"
         android:text="E"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="150dp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/FText"
-        android:layout_width="84dp"
-        android:layout_height="40dp"
-        android:layout_alignStart="@+id/CText"
-        android:layout_below="@+id/EButton"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/DText"
+        android:layout_toEndOf="@+id/title"
         android:text="F"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="150dp" />
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/HButton"
+        android:layout_width="112dp"
+        android:layout_height="84dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="122dp" />
+
+    <Button
+        android:id="@+id/IButton"
+        android:layout_width="103dp"
+        android:layout_height="86dp"
+        android:layout_alignTop="@+id/HButton"
+        android:layout_toEndOf="@+id/title" />
 
     <TextView
         android:id="@+id/GText"
-        android:layout_width="85dp"
-        android:layout_height="36dp"
-        android:layout_alignStart="@+id/GButton"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/AText"
         android:layout_below="@+id/GButton"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text="G"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="150dp" />
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/IText"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GButton"
+        android:layout_toEndOf="@+id/title"
+        android:text="I"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/HText"
         android:layout_width="85dp"
-        android:layout_height="39dp"
-        android:layout_below="@+id/GButton"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="H"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="150dp" />
-
-    <TextView
-        android:id="@+id/DText"
-        android:layout_width="90dp"
-        android:layout_height="37dp"
-        android:layout_alignStart="@+id/GButton"
-        android:layout_below="@+id/EButton"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="D"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="150dp" />
-
-    <TextView
-        android:id="@+id/CText"
-        android:layout_width="91dp"
-        android:layout_height="39dp"
-        android:layout_alignStart="@+id/FButton"
-        android:layout_below="@+id/AButton"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="C"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="264dp"
-        tools:layout_editor_absoluteY="150dp" />
-
-    <TextView
-        android:id="@+id/BText"
-        android:layout_width="91dp"
-        android:layout_height="36dp"
-        android:layout_alignTop="@+id/CText"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="B"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="150dp" />
-
-    <Button
-        android:id="@+id/GButton"
-        android:layout_width="wrap_content"
-        android:layout_height="79dp"
-        android:layout_alignStart="@+id/HButton"
-        android:layout_alignTop="@+id/IButton"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="327dp" />
-
-    <Button
-        android:id="@+id/HButton"
-        android:layout_width="199dp"
-        android:layout_height="55dp"
-        android:layout_alignEnd="@+id/BText"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="26dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="440dp" />
-
-    <Button
-        android:id="@+id/EButton"
-        android:layout_width="wrap_content"
-        android:layout_height="79dp"
-        android:layout_alignTop="@+id/DButton"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/FButton"
-        app:layout_constraintTop_toTopOf="@+id/FButton" />
-
-    <Button
-        android:id="@+id/DButton"
-        android:layout_width="90dp"
-        android:layout_height="79dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/GButton"
-        android:layout_marginTop="192dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/EButton"
-        app:layout_constraintStart_toStartOf="@+id/AButton"
-        tools:layout_editor_absoluteY="206dp" />
-
-    <Button
-        android:id="@+id/AButton"
-        android:layout_width="98dp"
-        android:layout_height="74dp"
-        android:layout_alignStart="@+id/GButton"
-        android:layout_alignTop="@+id/BButton"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/BButton"
-        app:layout_constraintTop_toTopOf="@+id/BButton" />
-
-    <Button
-        android:id="@+id/IButton"
-        android:layout_width="wrap_content"
-        android:layout_height="79dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="119dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="327dp" />
-
-    <Button
-        android:id="@+id/FButton"
-        android:layout_width="wrap_content"
-        android:layout_height="79dp"
-        android:layout_alignStart="@+id/CButton"
-        android:layout_alignTop="@+id/EButton"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="264dp"
-        tools:layout_editor_absoluteY="206dp" />
-
-    <Button
-        android:id="@+id/BButton"
-        android:layout_width="wrap_content"
-        android:layout_height="73dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/CButton"
-        app:layout_constraintTop_toTopOf="@+id/CButton" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="CAD Buddy"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/CButton"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/AButton"
-        android:layout_marginEnd="47dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="264dp"
-        tools:layout_editor_absoluteY="76dp" />
+        android:layout_alignStart="@+id/BButton"
+        android:layout_below="@+id/GButton"
+        android:layout_marginStart="2dp"
+        android:text="H"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/esc"
-        android:layout_width="63dp"
+        android:layout_width="58dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/CText"
-        android:layout_alignTop="@+id/HButton"
-        android:text="esc"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="264dp"
-        tools:layout_editor_absoluteY="440dp" />
-
-    <TextView
-        android:id="@+id/AText"
-        android:layout_width="96dp"
-        android:layout_height="40dp"
-        android:layout_alignStart="@+id/GButton"
-        android:layout_alignTop="@+id/CText"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="A"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="150dp" />
-
-    <!--
-    <EditText
-        android:id="@+id/valueMeasure"
-        android:layout_width="86dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/FButton"
-        android:layout_alignTop="@+id/GButton"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:visibility = "gone"
-        />
-
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/HButton"
-        android:layout_alignStart="@+id/FButton"
-        android:visibility = "gone"
-        android:text="submit" />
-        -->
+        android:layout_alignEnd="@+id/IButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+        android:text="ESC" />
 
 </RelativeLayout>
