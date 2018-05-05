@@ -1,5 +1,6 @@
 package com.example.hbang.swithcscreen;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button GButton;
     Button HButton;
     Button IButton;
-    //Button submit;
+    Button btnEnter;
     Button esc;
 
     private String[] buttonKeys = {"a", "b", "c", "d", "e", "f","g", "h", "i", "j"};
@@ -63,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView GText;
     TextView HText;
     TextView IText;
-   // TextView valueM;
 
     Socket s;
     PrintWriter pw;
@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.measure_input,null);
+        final EditText mPassword = mView.findViewById(R.id.valueinput);
+        Button mEnter = mView.findViewById(R.id.btnEnter);
+
+        btnEnter = findViewById(R.id.btnEnter);
         Intent intent = getIntent();
         final String HOST = intent.getStringExtra(ipconfig.IP_STRING);
         final int PORT = Integer.parseInt(intent.getStringExtra(ipconfig.PORT_NUM));
@@ -335,7 +341,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 System.out.println(key);
                 pw.write(key);
                 pw.flush();
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+
+                // Build Dialog
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
                 View mView = getLayoutInflater().inflate(R.layout.measure_input,null);
                 final EditText mPassword = mView.findViewById(R.id.valueinput);
                 Button mEnter = mView.findViewById(R.id.btnEnter);
@@ -343,6 +351,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
+
+                // OnClick Method for submit
                 mEnter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -359,12 +369,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(MainActivity.this,
                                     R.string.error_login_msg,
                                     Toast.LENGTH_SHORT).show();
+                            pw.write("0000");
+                            pw.flush();
                         }
                     }
                 });
-
-
-                break;
 
             case R.id.HButton:
                 String i = ((Button) V).getText().toString();
@@ -383,10 +392,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.write(key);
                 pw.flush();
                 break;
+
+            case R.id.btnEnter:
+
         }
 
 
     }
+
+   /* public void openDialog() {
+        InputDialog inputDialog = new InputDialog();
+        inputDialog.show(getSupportFragmentManager(),"value input");
+    }*/
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
