@@ -48,10 +48,8 @@
         android:id="@+id/AText"
         android:layout_width="98dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/DButton"
         android:layout_alignStart="@+id/AButton"
-        android:layout_marginBottom="-181dp"
-        android:layout_marginStart="8dp"
+        android:layout_below="@+id/AButton"
         android:text="A"
         android:textSize="18sp" />
 
@@ -76,22 +74,22 @@
     <Button
         android:id="@+id/DButton"
         android:layout_width="102dp"
-        android:layout_height="80dp"
+        android:layout_height="88dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="247dp"
+        android:layout_marginTop="227dp"
         android:layout_toStartOf="@+id/title" />
 
     <Button
         android:id="@+id/EButton"
         android:layout_width="110dp"
-        android:layout_height="82dp"
+        android:layout_height="89dp"
         android:layout_alignStart="@+id/BButton"
         android:layout_alignTop="@+id/DButton" />
 
     <Button
         android:id="@+id/FButton"
         android:layout_width="107dp"
-        android:layout_height="82dp"
+        android:layout_height="88dp"
         android:layout_alignTop="@+id/DButton"
         android:layout_toEndOf="@+id/title" />
 
@@ -115,9 +113,8 @@
         android:id="@+id/EText"
         android:layout_width="106dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/DButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="238dp"
         android:text="E"
         android:textSize="18sp" />
 
@@ -147,10 +144,11 @@
 
     <TextView
         android:id="@+id/GText"
-        android:layout_width="84dp"
+        android:layout_width="89dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/AText"
+        android:layout_alignStart="@+id/AButton"
         android:layout_below="@+id/GButton"
+        android:layout_marginStart="3dp"
         android:text="G"
         android:textSize="18sp" />
 
@@ -165,11 +163,10 @@
 
     <TextView
         android:id="@+id/HText"
-        android:layout_width="85dp"
+        android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/BButton"
         android:layout_below="@+id/GButton"
-        android:layout_marginStart="2dp"
+        android:layout_centerHorizontal="true"
         android:text="H"
         android:textSize="18sp" />
 

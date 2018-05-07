@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Initialize Shortcut mappings
     private String[] buttonKeys = {"a", "b", "c", "d", "e", "f","g", "h", "i", "j"};
     byte bytes[];
+
     //Initialize TextView Objects
     TextView title;
     TextView AText;
@@ -215,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 HText.setText("Measure");
                                 IText.setText("SmartD");
 
-                                HButton.setVisibility(View.VISIBLE);
+                                IButton.setVisibility(View.VISIBLE);
                                 IText.setVisibility(View.VISIBLE);
 
                                 EButton.setText("");
@@ -252,8 +253,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 IText.setText("SmartD");
                                 title.setText("Assembly");
 
+                                // Make smart dimension button invisible since not used for this state
                                 IButton.setVisibility(View.INVISIBLE);
                                 IText.setVisibility(View.INVISIBLE);
+
                                 valid_window = true;
                             }
                             if (message.equals("INVALID")){
@@ -285,6 +288,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         the current foreground window in the computer is a valid one.
 
          */
+
         xTheta = event.values[0];
         yTheta = event.values[1];
         zTheta = event.values[2];
@@ -373,6 +377,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     System.out.println(key);
                     pw.write(key);
                     pw.flush();
+
+                    // Build Dialog Box that allows user to input value for smart dimensions
+
                     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
                     View mView = getLayoutInflater().inflate(hbang.switchscreen.switchscreen.R.layout.measure_input, null);
                     final EditText mPassword = mView.findViewById(hbang.switchscreen.switchscreen.R.id.valueinput);
@@ -381,6 +388,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mBuilder.setView(mView);
                     final AlertDialog dialog = mBuilder.create();
                     dialog.show();
+
+                    // OnClick method for enter button for the dialog box
                     mEnter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
