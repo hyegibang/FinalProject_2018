@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+    /* Allows users to input IP and host to connect via wifi. */
 public class ipconfig extends AppCompatActivity implements View.OnClickListener{
     EditText IP_config_Edittext;
     EditText port_config_Edittext;
