@@ -1,9 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        version1 {
+            keyAlias 'ver1'
+            keyPassword 'HyeJoNathan'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.hbang.swithcscreen"
+        applicationId "hbang.switchscreen"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
@@ -15,7 +21,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    } }
+    }
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

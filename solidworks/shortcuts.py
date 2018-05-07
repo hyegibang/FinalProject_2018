@@ -30,13 +30,25 @@ def keystroke(inputs):
             keyboard.press(input)
         else:
             #reference the dict for the true button input
-            keyboard.press(Key[input])
+            if input in Key:
+                keyboard.press(Key[input])
+            else:
+                try:
+                    keyboard.press(Key[input])
+                except KeyError:
+                    time.sleep(3)
+                    print("Invalid Keystroke")
+                    pass
     #Manage keyboard releases. Needed for multi-key shortcuts
     for input in inputs:
         if len(input) == 1:
             keyboard.release(input)
         else:
-            keyboard.release(Key[input])
+            try:
+                keyboard.release(Key[input])
+            except KeyError:
+                print("Invalid Keystroke")
+                pass
 
 if __name__ == '__main__':
     keystroke('a')
