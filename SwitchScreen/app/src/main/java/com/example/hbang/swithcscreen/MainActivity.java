@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /* Every button a user triggers, the method creates a toast and sends the value of the button.
         When smart dimension Button, IButton, is triggered, it displays a dialog that allows user to
         input a number value and sends that input data to the computer.
-            5.07.2018 sending input data currently not working - recognizes the smartd dialog on computer
+            *5.07.2018 sending input data currently not working - recognizes the smartd dialog on computer
             as an invalid window type
        */
 
