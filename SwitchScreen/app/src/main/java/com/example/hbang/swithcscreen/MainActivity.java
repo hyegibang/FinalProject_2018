@@ -1,6 +1,15 @@
+/*
+    Hyegi Bang, Jonathan Zerez
+    Software Design | Spring 2018
+
+   Main script of the app that functions both as a server and client. It streams the orientation data
+   of the phone and outputs to the client server via wifi. When a button is pressed, it also sends
+   the value a button is assigned. As a server, it receives the state of window open on computer
+   and alters the screen of the phone based on the computer's state.
+ */
+
 package com.example.hbang.swithcscreen;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -30,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static String TAG = "MainActivity";
 
-    // Orientation for rotation
+    // Orientation variables for rotation
     private SensorManager oriSensorManager;
     private Sensor oriSensor;
     private double xTheta;
@@ -69,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Log.i(TAG, "activity started");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -76,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // receives wifi ip and socket user input from ipconfig.java
         btnEnter = findViewById(R.id.btnEnter);
         Intent intent = getIntent();
         final String HOST = intent.getStringExtra(ipconfig.IP_STRING);
@@ -83,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i(TAG, "ip is " + HOST);
         Log.i(TAG, "port is " + PORT);
 
-        // Client Server
+        // Connects wifi socket between two devices
         try {
             Log.e(TAG, "socket failed");
             s = new Socket(HOST, PORT);
@@ -94,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+        // Establishes client server, streams/sends data to the server.
         Thread recieveThread = new Thread(new MyServerThread(PORT));
         recieveThread.start();
 
@@ -138,8 +150,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    // Server
     class MyServerThread implements Runnable {
+        /*
+            Functions as a server in order to receive data from the computer. Therefore, based on the
+            window state information of the computer received, the app alters its own state by only
+            displaying the most relevant shortcuts are displayed. For every state, the buttonkey array
+            is overwritten by the values relevant to the predetermined displayed buttons of the state.
+         */
+
         Socket recieveSocket;
         ServerSocket ss;
         InputStreamReader isr;
@@ -152,21 +170,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             PORT = PORT_num;
             Log.i("server thread", "port is " + PORT);
         }
+
         public void run() {
             try {
                 ss = new ServerSocket(PORT);
                 System.out.println("Server Connected");
+
                 while (true) {
                     recieveSocket = ss.accept();
                     isr = new InputStreamReader(recieveSocket.getInputStream());
                     bufferedReader = new BufferedReader(isr);
-                    message = bufferedReader.readLine();
+                    message = bufferedReader.readLine(); // receives data
 
-                    // Changes the values of string array based on the state of window
                     runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
+                            // Changes the values of string array based on the state of window
+                            // along with the text and icons of the button.
                             if (message.equals("SLDPRT")) {
                                 buttonKeys = new String[]{"l", "c", "r", "z", "x", "v", "b", "e", "s"};
                                 AButton.setBackgroundResource(R.drawable.line);
@@ -226,11 +247,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 IText.setText("SmartD");
                                 title.setText("Assembly");
 
+                                // Since SmartD is not used in this state, the button is set to be invisible
                                 IButton.setVisibility(View.INVISIBLE);
                                 IText.setVisibility(View.INVISIBLE);
                             }
                         }
                     });
+
                     h.post(new Runnable() {
                         public void run() {
                             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
@@ -258,6 +281,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View V) {
+        /* Every button a user triggers, the method creates a toast and sends the value of the button.
+        When smart dimension Button, IButton, is triggered, it displays a dialog that allows user to
+        input a number value and sends that input data to the computer.
+            5.07.2018 sending input data currently not working - recognizes the smartd dialog on computer
+            as an invalid window type
+       */
+
         String key = "button: ";
         switch (V.getId()) {
             case R.id.AButton:
@@ -331,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.write(key);
                 pw.flush();
 
-                // Build Dialog for smart dimensions - input
+                // Builds the dialog box for user to input values by calling measure_input.xml
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
                 View mView = getLayoutInflater().inflate(R.layout.measure_input,null);
                 final EditText mPassword = mView.findViewById(R.id.valueinput);
@@ -341,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
 
-                // OnClick Method for submit
+                // OnClick Method for submit - sends the input data to the computer
                 mEnter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
