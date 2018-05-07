@@ -1,5 +1,17 @@
-package hbang.switchscreen.switchscreen;
+/*
+Hyegi Bang, Jonathan Zerez
+SoftDes, Spring 2018
 
+This java class is the main activity that runs and parses the mobile side of our application. It
+is a child of the ipconfig class, which asks the user for desired PORT and HOST information to
+establish a connection to the computer.
+
+This class listens for messages from the computer about the current foreground window and properly
+updates the button UI. In addition, it also sends messages about orientation and button states.
+ */
+
+// Import Dependencies
+package hbang.switchscreen.switchscreen;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -29,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static String TAG = "MainActivity";
 
-    // Orientation for rotation
+    // Initialize Variables
     private SensorManager oriSensorManager;
     private Sensor oriSensor;
     private double xTheta;
@@ -37,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private double zTheta;
     public boolean valid_window = false;
 
-    // Initialize settings for shortcut
+    // Initialize Buttons
     Button AButton;
     Button BButton;
     Button CButton;
@@ -47,11 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button GButton;
     Button HButton;
     Button IButton;
-    //Button submit;
     Button esc;
 
+    //Initialize Shortcut mappings
     private String[] buttonKeys = {"a", "b", "c", "d", "e", "f","g", "h", "i", "j"};
     byte bytes[];
+    //Initialize TextView Objects
     TextView title;
     TextView AText;
     TextView BText;
@@ -62,8 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView GText;
     TextView HText;
     TextView IText;
-   // TextView valueM;
 
+    // Socket and writer objects for communication
     Socket s;
     PrintWriter pw;
 
@@ -76,14 +89,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(hbang.switchscreen.switchscreen.R.layout.activity_main);
 
+        //Recieve HOST and PORT from the previous Intent(ipconfig.java)
         Intent intent = getIntent();
         final String HOST = intent.getStringExtra(ipconfig.IP_STRING);
         final int PORT = Integer.parseInt(intent.getStringExtra(ipconfig.PORT_NUM));
         //Log.i(TAG, "ip is " + HOST);
         //Log.i(TAG, "port is " + PORT);
-        // Client Server
+
+        // Test the Client Server (sends message to computer)
         try {
-            //Log.e(TAG, "socket failed");
             s = new Socket(HOST, PORT);
             pw = new PrintWriter(s.getOutputStream());
             pw.write("wifi is working");
@@ -92,11 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
 
         }
-
+        // Initialize the Server (listens for messages from computer)
         Thread recieveThread = new Thread(new MyServerThread(PORT));
         recieveThread.start();
 
-
+        //Pair button objects with their corresponding xml elements.
         AButton = findViewById(hbang.switchscreen.switchscreen.R.id.AButton);
         BButton = findViewById(hbang.switchscreen.switchscreen.R.id.BButton);
         CButton = findViewById(hbang.switchscreen.switchscreen.R.id.CButton);
@@ -109,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         esc = findViewById(hbang.switchscreen.switchscreen.R.id.esc);
 
+        //Pair TextView objects with their corresponding xml elements
         title = findViewById(hbang.switchscreen.switchscreen.R.id.title);
         AText = findViewById(hbang.switchscreen.switchscreen.R.id.AText);
         BText = findViewById(hbang.switchscreen.switchscreen.R.id.BText);
@@ -120,10 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HText = findViewById(hbang.switchscreen.switchscreen.R.id.HText);
         IText = findViewById(hbang.switchscreen.switchscreen.R.id.IText);
 
-
-        //valueM = findViewById(R.id.valueMeasure);
-        //submit = findViewById(R.id.submit);
-
+        //Initialize the OnClick function for all of the buttons
         AButton.setOnClickListener(this);
         BButton.setOnClickListener(this);
         CButton.setOnClickListener(this);
@@ -135,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         IButton.setOnClickListener(this);
         esc.setOnClickListener(this);
 
+        //Initialize the Orientation Sensor Manager and its child functions.
         oriSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         oriSensor = oriSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
         oriSensorManager.registerListener(this, oriSensor, 10000000);;
@@ -143,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Server - Removed from a individual class due to getApplicationContent Error 4.24.2018
     class MyServerThread implements Runnable {
+        //Initialize the socket and helper objects for reading
         Socket recieveSocket;
         ServerSocket ss;
         InputStreamReader isr;
@@ -156,6 +170,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i("server thread", "port is " + PORT);
         }
         public void run() {
+            /*
+            This function is the main function of the receive thread. It listens for messages from
+            the computer, and updates the return values and text associated with each button
+            accordingly. The possible messages from the computer are "SLDPRT", "SLDASM",
+            and "INVALID".
+
+
+             */
             try {
                 ss = new ServerSocket(PORT);
                 System.out.println("Server Connected");
@@ -164,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     isr = new InputStreamReader(recieveSocket.getInputStream());
                     bufferedReader = new BufferedReader(isr);
                     message = bufferedReader.readLine();
-                    Log.i("server thread", "message is " + message);
                     // Changes the values of string array based on the state
                     runOnUiThread(new Runnable() {
 
@@ -258,12 +279,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        //Log.i(TAG, "" + (double) ((Math.floor(event.values[0]) * 10000) / 10000));
-        //Log.i(TAG, event.values[0] + "");
+        /*
+        This method is called whenever the orientation sensor's values change. It records the new
+        orientation of the phone, and then sends the Y and Z values to the computer as long as
+        the current foreground window in the computer is a valid one.
+
+         */
         xTheta = event.values[0];
         yTheta = event.values[1];
         zTheta = event.values[2];
-        //Log.i(TAG, "" + yTheta + zTheta);
         pw.write(yTheta + ", " + zTheta);
         pw.flush();
 
@@ -271,6 +295,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View V) {
+        /*
+        This method is called whenever any button is pressed. It takes the current return value for
+        the button in question and sends it to the computer.
+
+         */
         String key = "button: ";
         if (valid_window) {
             switch (V.getId()) {
@@ -400,7 +429,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+    /*
+    This method is simply a requirement. We don't use it.
+     */
     }
 
 }
