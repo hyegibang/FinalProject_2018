@@ -27,8 +27,6 @@ import java.net.Socket;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
-    //public final static String HOST = "10.7.64.13";
-    //public final static int PORT = 6969;
 
     private static String TAG = "MainActivity";
 
@@ -52,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnEnter;
     Button esc;
 
+    // Initializing buttonKey array
     private String[] buttonKeys = {"a", "b", "c", "d", "e", "f","g", "h", "i", "j"};
-    byte bytes[];
     TextView title;
     TextView AText;
     TextView BText;
@@ -65,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView HText;
     TextView IText;
 
+    // Variables for wifi transfer
     Socket s;
     PrintWriter pw;
 
@@ -77,17 +76,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        View mView = getLayoutInflater().inflate(R.layout.measure_input,null);
-        final EditText mPassword = mView.findViewById(R.id.valueinput);
-        Button mEnter = mView.findViewById(R.id.btnEnter);
-
         btnEnter = findViewById(R.id.btnEnter);
         Intent intent = getIntent();
         final String HOST = intent.getStringExtra(ipconfig.IP_STRING);
         final int PORT = Integer.parseInt(intent.getStringExtra(ipconfig.PORT_NUM));
         Log.i(TAG, "ip is " + HOST);
         Log.i(TAG, "port is " + PORT);
+
         // Client Server
         try {
             Log.e(TAG, "socket failed");
@@ -126,10 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HText = findViewById(R.id.HText);
         IText = findViewById(R.id.IText);
 
-
-        //valueM = findViewById(R.id.valueMeasure);
-        //submit = findViewById(R.id.submit);
-
         AButton.setOnClickListener(this);
         BButton.setOnClickListener(this);
         CButton.setOnClickListener(this);
@@ -147,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    // Server - Removed from a individual class due to getApplicationContent Error 4.24.2018
+    // Server
     class MyServerThread implements Runnable {
         Socket recieveSocket;
         ServerSocket ss;
@@ -171,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     bufferedReader = new BufferedReader(isr);
                     message = bufferedReader.readLine();
 
-                    // Changes the values of string array based on the state
+                    // Changes the values of string array based on the state of window
                     runOnUiThread(new Runnable() {
 
                         @Override
@@ -205,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 EButton.setText("");
                                 FButton.setText("");
                                 GButton.setText("");
-
 
                             }
 
@@ -255,10 +245,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    // Outputs the orientation data
     @Override
     public void onSensorChanged(SensorEvent event) {
-        //Log.i(TAG, "" + (double) ((Math.floor(event.values[0]) * 10000) / 10000));
-        //Log.i(TAG, event.values[0] + "");
         xTheta = event.values[0];
         yTheta = event.values[1];
         zTheta = event.values[2];
@@ -342,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.write(key);
                 pw.flush();
 
-                // Build Dialog
+                // Build Dialog for smart dimensions - input
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
                 View mView = getLayoutInflater().inflate(R.layout.measure_input,null);
                 final EditText mPassword = mView.findViewById(R.id.valueinput);
@@ -392,18 +381,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 pw.write(key);
                 pw.flush();
                 break;
-
-            case R.id.btnEnter:
-
+                
         }
 
 
     }
-
-   /* public void openDialog() {
-        InputDialog inputDialog = new InputDialog();
-        inputDialog.show(getSupportFragmentManager(),"value input");
-    }*/
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
