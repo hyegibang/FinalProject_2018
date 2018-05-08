@@ -1,5 +1,3 @@
-Note: our current website can be found at http://hyegibang.github.io/MouseRemote
-
 # CAD Buddy
 ### Softdes Final Project, Spring 2018
 This project explores the use of a smart phone as an advanced form of input for laptop computers. Rather than using a mouse with relatively few sensors, buttons, and methods for feedback, we decided to try to leverage the many sensors and features of smartphones in order to create a cheap and effective tool for interacting with computers.
@@ -27,7 +25,7 @@ This sectin will go over how to install the app if you intention is to develop i
 It should install the necessary packages, as well as their respective dependencies.
 
 From here, the process should be about the same. However, once the dependencies have been installed, the following python script
-`...\Mouseremote\Solidworks> python main.py`
+`...\MouseRemote\solidworks> python main.py`
 can be used to run the computer side of the project, rather than the original executable.
 
 ## How to use:
@@ -39,3 +37,14 @@ There is a lot that we could do to improve our project, notably with making it e
 In the future, we wish to implement the ability to cast customized buttons within the app, such that a sldreg file that overwrites native short cuts doesn't need to be used.
 
 In addition, we believe that it would be much better if we could tie the project to a solidworks API in order to more smoothly change the orientation of the part, and more robustly select feature tools without having to emulate keyboard shortcuts.
+
+## Notable Files: 
+* [`...\MouseRemote\Sockets\client.py`](https://github.com/hyegibang/MouseRemote/blob/master/Sockets/client.py)
+* [`...\MouseRemote\Sockets\server.py`](https://github.com/hyegibang/MouseRemote/blob/master/Sockets/server.py)
+
+* [`...\MouseRemote\solidworks\main.py`](https://github.com/hyegibang/MouseRemote/blob/master/solidworks/main.py)
+* [`...\MouseRemote\solidworks\window.py`](https://github.com/hyegibang/MouseRemote/blob/master/solidworks/window.py)
+* [`...\MouseRemote\solidworks\shortcuts.py`](https://github.com/hyegibang/MouseRemote/blob/master/solidworks/shortcuts.py)
+
+* [`...\MouseRemote\SwitchScreen\...\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/MainActivity.java)
+* [`...\MouseRemote\SwitchScreen\...\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/ipconfig.java)
