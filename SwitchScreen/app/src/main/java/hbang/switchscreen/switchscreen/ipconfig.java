@@ -31,7 +31,7 @@ public class ipconfig extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(hbang.switchscreen.switchscreen.R.layout.activity_ipconfig);
-        //Pair view objects with their xml counterparts. 
+        //Pair view objects with their xml counterparts.
         IP_config_Edittext = findViewById(hbang.switchscreen.switchscreen.R.id.IP_config);
         port_config_Edittext = findViewById(hbang.switchscreen.switchscreen.R.id.port_config);
         submit_button = findViewById(hbang.switchscreen.switchscreen.R.id.submit);
