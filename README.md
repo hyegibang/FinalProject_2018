@@ -9,7 +9,7 @@ Our current project uses gyroscope data streaming from a smart phone in order to
 * [Hyegi Bang](https://github.com/hyegibang)
 * [Jonathan Yee](https://www.github.com/jzerez)
 ### Other software used
- [pynput v 1.3.10](https://pypi.python.org/pypi/pynput): This library is being used to parse simulated keystrokes as to interact with SolidWorks. The current version is compatible with Python version 3.6
+* [pynput v 1.3.10](https://pypi.python.org/pypi/pynput): This library is being used to parse simulated keystrokes as to interact with SolidWorks. The current version is compatible with Python version 3.6
 * [win32gui v 221.6](https://pypi.python.org/pypi/win32gui/221.6): This library is being used to monitor the current screens, as to make the app dynamic and prevent interference with programs other than Solidworks. The current version is compatible with Python version 3.6
 
 ## Getting started (Quick Start)
