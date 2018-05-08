@@ -46,5 +46,5 @@ In addition, we believe that it would be much better if we could tie the project
 * [`...\MouseRemote\solidworks\window.py`](https://github.com/hyegibang/MouseRemote/blob/master/solidworks/window.py)
 * [`...\MouseRemote\solidworks\shortcuts.py`](https://github.com/hyegibang/MouseRemote/blob/master/solidworks/shortcuts.py)
 
-* [`...\MouseRemote\SwitchScreen\...\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/MainActivity.java)
-* [`...\MouseRemote\SwitchScreen\...\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/ipconfig.java)
+* [`...\MouseRemote\SwitchScreen\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/MainActivity.java)
+* [`...\MouseRemote\SwitchScreen\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/ipconfig.java)
