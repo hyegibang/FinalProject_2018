@@ -48,3 +48,6 @@ In addition, we believe that it would be better if we could tie the project to a
 
 * [`...\MouseRemote\SwitchScreen\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/MainActivity.java)
 * [`...\MouseRemote\SwitchScreen\app\src\main\java\hbang\switchscreen\switchscreen\MainActivity.java`](https://github.com/hyegibang/MouseRemote/blob/master/SwitchScreen/app/src/main/java/hbang/switchscreen/switchscreen/ipconfig.java)
+
+## Project Poster 
+Project poster can be found [here](https://github.com/hyegibang/MouseRemote/blob/master/Class%20Documentation/ProjectPoster.pdf)
